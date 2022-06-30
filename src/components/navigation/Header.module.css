@@ -1,0 +1,16 @@
+.header_container {
+    align-items: center;
+    height: 10rem;
+    display: flex;
+    position: fixed;
+    width: 100%;
+}
+
+.header_content {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: auto;
+    width: 90%;
+}
