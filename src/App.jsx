@@ -15,9 +15,19 @@ import './App.css';
 
 function App() {
 
+  const [showMenu, setShowMenu] = useState(true);
+
+  const [token, setToken] = useState(false);
+
+  /* if (!token) {
+    return <Login />
+  } */
+
   return (
     <div className="App">
-      <Header />
+      <Router>
+        <Header showMenu={showMenu} setShowMenu={setShowMenu} />
+      </Router>
     </div>
   );
 }

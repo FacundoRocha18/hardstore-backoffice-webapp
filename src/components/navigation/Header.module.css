@@ -1,16 +1,76 @@
-.header_container {
-    align-items: center;
-    height: 10rem;
+header {
     display: flex;
-    position: fixed;
+    justify-content: center;
+    width: 375px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.header_container {
+    background-color: var(--item-bg-secondary-color);
+    height: 100%;
+    position: relative;
+    left: 0;
+    padding: 1rem 2rem;
+    top: 0;
+    width: 300px;
+    transform: translateX(0px);
+    transition: all .5s ease;
+}
+
+.buttons_container {
+    align-items: center;
+    background-color: var(--item-bg-secondary-color);
+    border-left: solid 1px var(--borders-main-color);
+    border-right: solid 1px var(--orange);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+    width: 75px;
+    transition: all .5s ease;
+}
+
+.toggle_button {
+    margin-top: 25px;
+}
+
+.toggle_button span {
+    font-size: 3.5rem;
+}
+
+.toggle_button span {
+    color: var(--text-white);
+}
+
+.header_menu {
+    transition: all .5s ease;
+}
+
+.header_menu.hidden {
+    opacity: 0;
+}
+
+.logout_button_container {
+    margin: 2rem auto;
     width: 100%;
 }
 
-.header_content {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: auto;
-    width: 90%;
+.logout_button span {
+    color: var(--text-white);
+    transition: all .5s ease;
+}
+
+.logout_button:hover {
+    background-color: var(--orange);
+}
+
+.hide {
+    transform: translateX(-300px);
+}
+
+.move {
+    transform: translateX(-300px);
 }

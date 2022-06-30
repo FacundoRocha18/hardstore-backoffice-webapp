@@ -1,0 +1,51 @@
+.menu_container {
+    height: 100%;
+    width: 100%;
+}
+
+.menu_header h3 {
+    color: var(--text-white);
+    text-align: left;
+}
+
+.menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+    margin-top: 3rem;
+    text-align: left;
+}
+
+.menu ul li {
+    align-items: center;
+    border-bottom: solid 1px var(--border-grey-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+    transition: all .5s ease;
+}
+
+.menu ul li:last-child {
+    border-bottom: none;
+}
+
+.menu ul li:hover {
+    background-color: var(--orange);
+}
+
+.menu ul li:hover a,
+.menu ul li:hover span {
+    color: var(--text-main-color);
+
+}
+
+.menu ul li a {
+    inline-size: 100%;
+}
+
+.menu ul li a,
+.menu ul li span {
+    color: var(--text-white);
+    transition: all .5s ease;
+}
