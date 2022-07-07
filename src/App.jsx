@@ -8,6 +8,7 @@ import {
 
 /* Components ----------------------- */
 import Header from './components/navigation/Header'
+import Login from './components/login/Login'
 
 
 /* CSS Styles ----------------------- */
@@ -19,9 +20,9 @@ function App() {
 
   const [token, setToken] = useState(false);
 
-  /* if (!token) {
+  if (!token) {
     return <Login />
-  } */
+  }
 
   return (
     <div className="App">
