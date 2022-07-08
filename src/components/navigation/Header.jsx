@@ -39,7 +39,7 @@ const Header = ({ showMenu, setShowMenu }) => {
                         </section>
                     </div>
                     <div className={css(style.buttons_container, !showMenu && style.move)}>
-                        <button className={css('icon_btn', style.toggle_button)} onClick={(e) => handleToggleClicked(e)}>
+                        <button className={css('icon_btn', style.toggle_button)} onClick={(e) => handleToggleClicked(e)} title='Menu'>
                             <span className="material-icons-round">
                                 {icon}
                             </span>

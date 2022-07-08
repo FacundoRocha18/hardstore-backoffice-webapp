@@ -1,0 +1,12 @@
+.options_container {
+    margin: 10rem auto;
+}
+
+.options_header {
+    margin-bottom: 2rem;
+}
+
+.buttons_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}

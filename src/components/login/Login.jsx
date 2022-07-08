@@ -16,16 +16,16 @@ const LoginScreen = () => {
             <div className={style.inputs_container}>
               <div className={style.input_row}>
                 <label htmlFor='email'>Tu email:</label>
-                <input name='email' id='email' type='email'></input>
+                <input name='email' id='email' type='email' placeholder='email@email.com'></input>
               </div>
               
               <div className={style.input_row}>
                 <label htmlFor='pin'>Tu PIN:</label>
-                <input name='pin' id='pin' type='password' autoComplete='none'></input>
+                <input name='pin' id='pin' type='password' autoComplete='none' placeholder='Contraseña'></input>
               </div>
             </div>
             <div className={style.buttons_container}>
-              <button>Iniciar sesión</button>
+              <button><p>Iniciar sesión</p></button>
             </div>
           </form>
         </div>

@@ -22,6 +22,18 @@ html {
     box-sizing: border-box;
 }
 
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #181818;   
+  width: 100%;
+  height: 100%;
+  color: var(--text-main-color);
+  font-size: 1.6rem;
+  padding: 0;
+  margin: 1px;
+}
+
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
   color: var(--headers-main-color);
@@ -60,6 +72,12 @@ h6 {
 a {
   text-decoration: none;
   color: var(--text-main-color);
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  font-weight: var(--medium);
 }
 
 ul, ol, li {
@@ -130,17 +148,6 @@ ul, ol, li {
   --medium-h: 500;
   --semi-bold: 600;
   --bold: 700;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #181818;   
-  width: 100%;
-  height: 100%;
-  color: var(--text-main-color);
-  font-size: 1.6rem;
-  padding: 0;
-  margin: 1px;
 }
 
 .main_container {

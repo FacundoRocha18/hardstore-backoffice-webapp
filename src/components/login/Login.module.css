@@ -30,10 +30,12 @@
 }
 
 .input_row input {
-    border-radius: .4rem;
+    border-radius: .5rem;
     border: solid 1px rgb(109, 109, 109);
+    box-sizing: border-box;
+    font-size: 1.6rem;
     inline-size: 100%;
-    padding: 1rem 1rem;
+    padding: 1.3rem;
 }
 
 .buttons_container {
@@ -47,10 +49,16 @@
     background-color: var(--login-btn);
     border: none;
     border-radius: .3rem;
+    box-sizing: border-box;
+    box-shadow: var(--box-shadow-1);
     cursor: pointer;
     inline-size: 100%;
-    padding: 1.3rem 2.5rem;
+    padding: 1rem 2rem;
     transition: all .5s ease;
+}
+
+.buttons_container button p {
+    font-size: 1.6rem;
 }
 
 .buttons_container button:hover {
