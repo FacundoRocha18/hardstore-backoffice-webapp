@@ -11,7 +11,7 @@ const Home = ({showMenu}) => {
   return (
     <>
         <div className={css(style.home_container, !showMenu && style.grow)}>
-            <OptionsScreen />
+            <OptionsScreen showMenu={showMenu} />
         </div>
     </>
   )

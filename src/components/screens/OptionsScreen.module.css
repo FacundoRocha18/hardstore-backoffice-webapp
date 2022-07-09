@@ -1,12 +1,36 @@
 .options_container {
+    background-color: var(--black-hover);
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow-1);
+    padding: 2rem;
+    max-width: 100%;
     margin: 10rem auto;
+    transition: all .5s ease;
+}
+
+.options_container.grow {
+    max-width: 70%;
 }
 
 .options_header {
     margin-bottom: 2rem;
 }
 
+.options_header h2 {
+    color: var(--text-white);
+}
+
 .buttons_container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.options_button {
+    background: var(--primary-btn-gradient);
+    cursor: pointer;
+}
+
+.options_button:hover {
+    background: var(--primary-btn-gradient-hover);
 }

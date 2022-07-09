@@ -4,20 +4,20 @@ import React from 'react'
 import style from './OptionsScreen.module.css'
 import css from 'classnames'
 
-const OptionsScreen = ({ title = 'Usuarios' }) => {
+const OptionsScreen = ({ showMenu, title = 'Usuarios' }) => {
     return (
         <>
             <section className='main_container'>
-                <div className={style.options_container}>
+                <div className={css(style.options_container, !showMenu && style.grow)}>
                     <div className={style.options_header}>
                         <h2>{title}</h2>
                     </div>
                     <div className={style.options_body}>
                         <div className={style.buttons_container}>
-                            <button><p>Añadir usuario</p></button>
-                            <button><p>Eliminar usuario</p></button>
-                            <button><p>Modificar usuario</p></button>
-                            <button><p>Listar usuarios</p></button>
+                            <button className={css('btn', style.options_button)}><p>Añadir {title}</p></button>
+                            <button className={css('btn', style.options_button)}><p>Eliminar {title}</p></button>
+                            <button className={css('btn', style.options_button)}><p>Modificar {title}</p></button>
+                            <button className={css('btn', style.options_button)}><p>Listar {title}</p></button>
                         </div>
                     </div>
                 </div>
