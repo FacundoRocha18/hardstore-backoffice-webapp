@@ -6,10 +6,10 @@ import style from './Header.module.css'
 import css from 'classnames'
 
 /* Components ----------------------- */
-import Menu from './Menu'
+import { Menu } from '../../components'
 
 
-const Header = ({ showMenu, setShowMenu }) => {
+export const Header = ({ showMenu, setShowMenu, onLogOut }) => {
 
     const [toggle, setToggle] = useState();
 
@@ -27,7 +27,7 @@ const Header = ({ showMenu, setShowMenu }) => {
         <>
 
             {
-                <header>
+                <header className={css(!showMenu && style.hidden)}>
                     <div className={css(style.header_container, !showMenu && style.hide)}>
                         <section className={style.header_content}>
                             <div className={style.header_title_container}>
@@ -45,7 +45,7 @@ const Header = ({ showMenu, setShowMenu }) => {
                             </span>
                         </button>
                         <section className={css(style.logout_button_container, !showMenu && style.hidden)}>
-                            <button className={css('icon_btn', style.logout_button)} title='Cerrar sesión'>
+                            <button className={css('icon_btn', style.logout_button)} title='Cerrar sesión' onClick={onLogOut}>
                                 <span className="material-icons-round">
                                     logout
                                 </span>
@@ -60,4 +60,3 @@ const Header = ({ showMenu, setShowMenu }) => {
     )
 }
 
-export default Header;

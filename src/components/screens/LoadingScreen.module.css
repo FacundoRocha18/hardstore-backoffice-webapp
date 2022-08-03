@@ -1,0 +1,55 @@
+.container {
+    align-items: center;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 200px;
+    max-width: 200px;
+    margin: 15% auto;
+}
+
+.container h4 {
+    animation: flash 2s linear infinite;
+    color: #fff;
+    width: fit-content;
+}
+
+.spinner {
+    animation: spinner 4s linear infinite;
+    border: solid 3px var(--black);
+    border-top: solid 3px var(--blue);
+    border-radius: 50px;
+    height: 75px;
+    width: 75px;
+    max-height: 75px;
+    max-width: 75px;
+    margin: 25px;
+}
+
+@keyframes spinner {
+
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+
+}
+
+@keyframes flash {
+
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

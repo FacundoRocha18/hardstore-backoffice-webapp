@@ -7,6 +7,11 @@ header {
     top: 0;
     left: 0;
     z-index: 1000;
+    transition: all .5s ease;
+}
+
+header.hidden {
+    z-index: 0;
 }
 
 .header_container {
@@ -70,6 +75,7 @@ header {
 
 .hide {
     transform: translateX(-300px);
+    z-index: 0;
 }
 
 .move {

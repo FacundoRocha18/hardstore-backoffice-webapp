@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 /* CSS Styles --------------------- */
 import style from './OptionsScreen.module.css'
 import css from 'classnames'
 
-const OptionsScreen = ({ showMenu, title = 'Usuarios' }) => {
+export const OptionsScreen = ({ showMenu, title = 'Usuarios' }) => {
     return (
         <>
             <section className='main_container'>
@@ -14,10 +16,10 @@ const OptionsScreen = ({ showMenu, title = 'Usuarios' }) => {
                     </div>
                     <div className={style.options_body}>
                         <div className={style.buttons_container}>
-                            <button className={css('btn', style.options_button)}><p>Añadir {title}</p></button>
-                            <button className={css('btn', style.options_button)}><p>Eliminar {title}</p></button>
-                            <button className={css('btn', style.options_button)}><p>Modificar {title}</p></button>
-                            <button className={css('btn', style.options_button)}><p>Listar {title}</p></button>
+                            <Link to={'/api/users/create'} className={css('btn', style.options_button)}><p>Añadir {title}</p></Link>
+                            <Link to={'/api/users/delete'} className={css('btn', style.options_button)}><p>Eliminar {title}</p></Link>
+                            <Link to={'/api/users/update'} className={css('btn', style.options_button)}><p>Modificar {title}</p></Link>
+                            <Link to={'/api/users/list'} className={css('btn', style.options_button)}><p>Listar {title}</p></Link>
                         </div>
                     </div>
                 </div>
@@ -26,4 +28,3 @@ const OptionsScreen = ({ showMenu, title = 'Usuarios' }) => {
     )
 }
 
-export default OptionsScreen;

@@ -5,16 +5,24 @@ import style from './Home.module.css'
 import css from 'classnames'
 
 /* Components ----------------------- */
-import OptionsScreen from './screens/OptionsScreen'
+import { Header, LoadingScreen } from '../components'
 
-const Home = ({showMenu}) => {
-  return (
-    <>
-        <div className={css(style.home_container, !showMenu && style.grow)}>
-            <OptionsScreen showMenu={showMenu} />
-        </div>
-    </>
-  )
+export const Home = ({showMenu, loading}) => {
+  
+  if ( loading ) {
+    return (
+      <LoadingScreen />
+    )
+  }
+
+  if ( !loading ) {
+    return (
+      <>
+          <div className={css(style.home_container, !showMenu && style.grow)}>
+          </div>
+      </>
+    )
+  }
+
 }
 
-export default Home;

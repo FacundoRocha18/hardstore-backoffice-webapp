@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+
+/* ReactRouter ----------------------- */
 import {
   BrowserRouter as Router,
   Route,
@@ -8,33 +9,33 @@ import {
 } from 'react-router-dom'
 
 /* Components ----------------------- */
-import Header from './components/navigation/Header'
-import Login from './components/login/Login'
-import Home from './components/Home'
+import { Home, Header, LoginScreen } from '../components'
 
+/* Custom hooks --------------------- */
+import { useAuth } from '../hooks'
 
 /* CSS Styles ----------------------- */
 import './App.css';
 
-function App() {
+export const App = () => {
 
   const [showMenu, setShowMenu] = useState(true);
 
-  const [token, setToken] = useState(true);
+  const { token, loading, onLogin, onLogOut } = useAuth()
 
   if (!token) {
-    return <Login />
+    return <LoginScreen onLogin={onLogin} />
   }
 
   return (
     <div className="App">
       <Router>
-        <Header showMenu={showMenu} setShowMenu={setShowMenu} />
+        <Header showMenu={showMenu} setShowMenu={setShowMenu} onLogOut={onLogOut} />
         <Routes>
           <Route
             path='/'
             element={
-              <Home showMenu={showMenu} />
+              <Home showMenu={showMenu} isLoading={loading} />
             } />
         </Routes>
       </Router>
@@ -42,4 +43,3 @@ function App() {
   );
 }
 
-export default App;

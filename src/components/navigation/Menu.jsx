@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import style from './Menu.module.css'
 import css from 'classnames'
 
-const Menu = ({ }) => {
+export const Menu = ({ }) => {
   return (
     <div className={css(style.menu_container)}>
       <div className={style.menu_header}>
@@ -13,6 +13,12 @@ const Menu = ({ }) => {
       </div>
       <nav className={style.menu}>
         <ul>
+          <li>
+            <Link to={'/'}>Inicio</Link>
+            <span className="material-icons-round">
+              home
+            </span>
+          </li>
           <li>
             <Link to={'#'}>Empleados</Link>
             <span className="material-icons-round">
@@ -38,4 +44,3 @@ const Menu = ({ }) => {
   )
 }
 
-export default Menu;
