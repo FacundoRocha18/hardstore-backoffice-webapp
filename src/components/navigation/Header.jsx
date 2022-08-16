@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-
+import PropTypes from 'prop-types'
 /* CSS Styles --------------------- */
 import style from './Header.module.css'
 import css from 'classnames'
@@ -25,7 +24,6 @@ export const Header = ({ showMenu, setShowMenu, onLogOut }) => {
 
     return (
         <>
-
             {
                 <header className={css(!showMenu && style.hidden)}>
                     <div className={css(style.header_container, !showMenu && style.hide)}>
@@ -53,10 +51,14 @@ export const Header = ({ showMenu, setShowMenu, onLogOut }) => {
                         </section>
                     </div>
                 </header>
-
-
             }
         </>
     )
+}
+
+Header.propTypes = {
+    showMenu: PropTypes.bool.isRequired,
+    setShowMenu: PropTypes.func.isRequired,
+    onLogOut: PropTypes.func.isRequired
 }
 

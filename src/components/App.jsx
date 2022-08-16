@@ -21,7 +21,7 @@ export const App = () => {
 
   const [showMenu, setShowMenu] = useState(true);
 
-  const { token, loading, onLogin, onLogOut } = useAuth()
+  const { token, loading, setIsLoading, onLogin, onLogOut } = useAuth()
 
   if (!token) {
     return <LoginScreen onLogin={onLogin} />
@@ -35,7 +35,7 @@ export const App = () => {
           <Route
             path='/'
             element={
-              <Home showMenu={showMenu} isLoading={loading} />
+              <Home showMenu={showMenu} isLoading={loading} setIsLoading={setIsLoading} />
             } />
         </Routes>
       </Router>

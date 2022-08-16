@@ -1,0 +1,33 @@
+.grid_card {
+    background-color: #2A2A2A;
+    border-radius: 15px;
+}
+
+.card_title {
+    align-items: center;
+    border-bottom: solid 2px var(--orange);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.card_title h4,
+.card_title span,
+.card_body,
+.card_body h6 {
+    color: #fff;
+}
+
+.card_body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    text-align: left;
+}
+
+.number {
+    color: var(--orange);
+    font-weight: 600;
+}

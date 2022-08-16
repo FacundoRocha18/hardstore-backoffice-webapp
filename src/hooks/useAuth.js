@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 /* Custom hooks --------------------- */
-import { useToken } from '.';
+import { useToken } from '../hooks/useToken';
 
-/* API getters --------------------- */
+/* API callers --------------------- */
 import { getAuth } from '../API';
 
 export const useAuth = () => {
@@ -46,6 +46,7 @@ export const useAuth = () => {
   return {
     token,
     loading,
+    setIsLoading,
     onLogin: handleLogin,
     onLogOut: handleLogout
   }

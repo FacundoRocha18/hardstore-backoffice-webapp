@@ -7,40 +7,40 @@ import css from 'classnames'
 
 export const Menu = ({ }) => {
   return (
-    <div className={css(style.menu_container)}>
-      <div className={style.menu_header}>
-        <h3>Menú</h3>
-      </div>
-      <nav className={style.menu}>
-        <ul>
-          <li>
-            <Link to={'/'}>Inicio</Link>
-            <span className="material-icons-round">
-              home
-            </span>
-          </li>
-          <li>
-            <Link to={'#'}>Empleados</Link>
-            <span className="material-icons-round">
-              people_alt
-            </span>
-          </li>
-          <li>
-            <Link to={'#'}>Inventario</Link>
-            <span className="material-icons-round">
-              inventory
-            </span>
-          </li>
-          <li>
-            <Link to={'#'}>Ventas</Link>
-            <span className="material-icons-round">
-              sell
-            </span>
-          </li>
+      <div className={css(style.menu_container)}>
+        <div className={style.menu_header}>
+          <h3>Menú</h3>
+        </div>
+        <nav className={style.menu}>
+          <ul>
+            <li>
+              <Link to={'/'}>Inicio</Link>
+              <span className="material-icons-round">
+                home
+              </span>
+            </li>
+            <li>
+              <Link to={'/'}>Empleados</Link>
+              <span className="material-icons-round">
+                people_alt
+              </span>
+            </li>
+            <li>
+              <Link to={'/'}>Inventario</Link>
+              <span className="material-icons-round">
+                inventory
+              </span>
+            </li>
+            <li>
+              <Link to={'/'}>Ventas</Link>
+              <span className="material-icons-round">
+                sell
+              </span>
+            </li>
 
-        </ul>
-      </nav>
-    </div>
+          </ul>
+        </nav>
+      </div>
   )
 }
 

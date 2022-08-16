@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests on <Header /> component should match the snapshot 1`] = `
+<div>
+  <header
+    class="hidden"
+  >
+    <div
+      class="header_container hide"
+    >
+      <section
+        class="header_content"
+      >
+        <div
+          class="header_title_container"
+        >
+          <h1
+            class="website_logo"
+          >
+            <span>
+              Hard
+            </span>
+            Store
+          </h1>
+        </div>
+      </section>
+      <section
+        class="header_menu hidden"
+      >
+        <div
+          class="menu_container"
+        >
+          <div
+            class="menu_header"
+          >
+            <h3>
+              Menú
+            </h3>
+          </div>
+          <nav
+            class="menu"
+          >
+            <ul>
+              <li>
+                <a
+                  href="/"
+                >
+                  Inicio
+                </a>
+                <span
+                  class="material-icons-round"
+                >
+                  home
+                </span>
+              </li>
+              <li>
+                <a
+                  href="/"
+                >
+                  Empleados
+                </a>
+                <span
+                  class="material-icons-round"
+                >
+                  people_alt
+                </span>
+              </li>
+              <li>
+                <a
+                  href="/"
+                >
+                  Inventario
+                </a>
+                <span
+                  class="material-icons-round"
+                >
+                  inventory
+                </span>
+              </li>
+              <li>
+                <a
+                  href="/"
+                >
+                  Ventas
+                </a>
+                <span
+                  class="material-icons-round"
+                >
+                  sell
+                </span>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+    </div>
+    <div
+      class="buttons_container move"
+    >
+      <button
+        class="icon_btn toggle_button"
+        title="Menu"
+      >
+        <span
+          class="material-icons-round"
+        >
+          close
+        </span>
+      </button>
+      <section
+        class="logout_button_container hidden"
+      >
+        <button
+          class="icon_btn logout_button"
+          title="Cerrar sesión"
+        >
+          <span
+            class="material-icons-round"
+          >
+            logout
+          </span>
+        </button>
+      </section>
+    </div>
+  </header>
+</div>
+`;

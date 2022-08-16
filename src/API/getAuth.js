@@ -1,49 +1,33 @@
 
 export const getAuth = async (id, password) => {
 
-    const url = `https://api.hardstore.store/api/auth/login`
-
-    const devURL = `http://localhost:8000/api/auth/employees/login`
-
-    const data = {
+    const user = {
         id: id,
         pin: password
     };
+
+    const url = `https://api.hardstore.store/api/auth/employees/login`
+
+    const devURL = `http://127.0.0.1:8000/api/auth/employees/login`
 
     const params = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(user)
     };
 
-    const { ok, message, loginData } = await fetchData(devURL, params);
-
-    const { token, username } = loginData;
-
+    const response = await fetch(devURL, params)
+    
+    const { ok, message, data } = await response.json()
+    
+    const { token, username } = data;
+    
     return {
         status: ok,
-        message: message,
-        token: token,
-        username: username
-    };
-
-}
-
-const fetchData = async (url, params) => {
-
-    try {
-        const response = await fetch(url, params)
-
-        const { ok, message, data } = await response.json()
-
-        return {
-            status: ok,
-            message: message,
-            loginData: data
-        }
-    } catch (error) {
-        console.log(error);
+        message,
+        token,
+        username
     }
 }
