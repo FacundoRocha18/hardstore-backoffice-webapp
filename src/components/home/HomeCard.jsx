@@ -6,14 +6,14 @@ import PropTypes from 'prop-types'
 import style from './HomeCard.module.css'
 import css from 'classnames'
 
-export const HomeCard = ({ date, title, text, value }) => {
+export const HomeCard = ({ date, title, icon, text, value }) => {
     return (
         <>
             <div className={style.grid_card}>
                 <div className={style.card_title}>
                     <h4>{title}</h4>
                     <span className="material-icons-round">
-                        people
+                        {icon}
                     </span>
                 </div>
                 <div className={style.card_body}>
@@ -29,6 +29,7 @@ export const HomeCard = ({ date, title, text, value }) => {
 HomeCard.defaultProps = {
     date: 'Empty',
     title: 'Empty',
+    icon: 'people',
     text: 'Empty',
     value: 0
 }
@@ -36,6 +37,7 @@ HomeCard.defaultProps = {
 HomeCard.propTypes = {
     date: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     value: PropTypes.number.isRequired
 }

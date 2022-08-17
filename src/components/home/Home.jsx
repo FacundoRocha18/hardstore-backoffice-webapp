@@ -13,21 +13,24 @@ export const Home = ({ showMenu, isLoading, setIsLoading }) => {
 
   const [data, setData] = useState([
     {
-      date: '/hoy',
+      date: 'Hoy',
       title: 'Usuarios',
+      icon: 'people',
       text: 'Nuevos usuarios',
       value: 58
     },
     {
-      date: '/ayer',
+      date: 'Ayer',
       title: 'Usuarios',
+      icon: 'people',
       text: 'Usuarios perdidos',
       value: 12
     },
     {
-      date: '/hoy',
-      title: 'Usuarios',
-      text: 'Nuevos usuarios',
+      date: 'Hoy',
+      title: 'Inventario',
+      icon: 'inventory',
+      text: 'Nuevas ventas',
       value: 584
     }
   ]);
@@ -49,11 +52,12 @@ export const Home = ({ showMenu, isLoading, setIsLoading }) => {
           </div>
           <div className={style.grid_container}>
             {
-              data.map(({ date, title, text, value }, index) => (
+              data.map(({ date, title, icon, text, value }, index) => (
                 <HomeCard
                   key={index}
                   date={date}
                   title={title}
+                  icon={icon}
                   text={text}
                   value={value}
                 />

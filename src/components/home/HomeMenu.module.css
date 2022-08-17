@@ -1,4 +1,20 @@
 .container {
     background-color: #2A2A2A;
-    border-radius: 25px;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1000px;
+    width: 90%;
+    transition: all .5s ease;
+}
+
+.title h2 {
+    color: #fff;
+}
+
+.grid_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 25px;
 }

@@ -122,10 +122,10 @@ ul, ol, li {
 
 
   /* Fonts */
-  --headers-main-color: #0d0d0d;
-  --text-main-color: #111318;
+  --headers-main-color: #dddddd;
+  --text-main-color: #d4d4d4;
   --text-secondary-color: #ff6d00;
-  --text-white: #dad6d6;
+  --text-dark: #1b1b1b;
 
   /* Gradient backgrounds */
   --site-background-gradient: linear-gradient(156deg, rgba(0,0,0,1) 30%, rgba(32,32,32,1) 80%); 
@@ -174,7 +174,7 @@ ul, ol, li {
 }
 
 .website_logo span {
-  color: var(--text-white);
+  color: var(--headers-main-color);
   font-weight: var(--medium-h);
   letter-spacing: -1pt;
 }

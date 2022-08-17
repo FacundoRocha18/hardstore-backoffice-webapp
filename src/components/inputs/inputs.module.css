@@ -1,0 +1,29 @@
+.button {
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: all .3s ease;
+}
+
+.button p {
+    color: var(--text-dark);
+}
+
+.button.btn {
+    background-color: var(--orange);
+}
+
+.button.btn:hover {
+    background-color: var(--orange-hover);
+}
+
+.button.link {
+    background-color: transparent;
+    border: none;
+}
+
+.button.link:hover {
+    background-color: var(--orange);
+}

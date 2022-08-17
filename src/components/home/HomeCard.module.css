@@ -1,6 +1,7 @@
 .grid_card {
     background-color: #2A2A2A;
     border-radius: 15px;
+    transition: all .5s ease;
 }
 
 .card_title {
