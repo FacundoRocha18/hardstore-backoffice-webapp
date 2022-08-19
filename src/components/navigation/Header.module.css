@@ -3,11 +3,11 @@ header {
     justify-content: center;
     width: 375px;
     height: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
-    transition: all .5s ease;
+    transition: all .5s ease-in-out;
 }
 
 header.hidden {

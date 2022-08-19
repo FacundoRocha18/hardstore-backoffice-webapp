@@ -11,23 +11,22 @@
 .menu ul {
     display: flex;
     flex-direction: column;
-    gap: .7rem;
+    gap: 7px;
     margin-top: 3rem;
     text-align: left;
 }
 
 .menu ul li {
     align-items: center;
-    border-bottom: solid 1px var(--border-grey-color);
+    border-radius: 5px;
+    box-sizing: border-box;
     cursor: pointer;
     display: flex;
-    justify-content: space-between;
-    padding: .5rem;
-    transition: all .5s ease;
-}
-
-.menu ul li:last-child {
-    border-bottom: none;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 10px;
+    width: 100%;
+    transition: all .3s ease-in-out;
 }
 
 .menu ul li:hover {
@@ -36,16 +35,20 @@
 
 .menu ul li:hover a,
 .menu ul li:hover span {
-    color: var(--text-main-color);
-
+    color: var(--text-dark);
 }
 
 .menu ul li a {
     inline-size: 100%;
 }
 
+.menu ul li span {
+    min-height: 25px;
+    min-width: 25px;
+}
+
 .menu ul li a,
 .menu ul li span {
     color: var(--text-white);
-    transition: all .5s ease;
+    transition: all .3s ease-in-out;
 }

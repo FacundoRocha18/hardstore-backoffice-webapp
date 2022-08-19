@@ -26,16 +26,16 @@ export const HomeMenu = () => {
                 </div>
                 <div className={style.grid_container}>
                     <Button variant='btn' >
-                        <Link to={'/test'}><p>Inicio</p></Link>
+                        <Link to={'/api/products/new'}><p>Agregar productos</p></Link>
                     </Button>
                     <Button variant='btn'>
-                        <Link to={'/test'}><p>Inicio</p></Link>
+                        <Link to={'/test'}><p>Eliminar productos</p></Link>
                     </Button>
                     <Button variant='btn' >
-                        <Link to={'/test'}><p>Inicio</p></Link>
+                        <Link to={'/test'}><p>Modificar productos</p></Link>
                     </Button>
                     <Button variant='btn'>
-                        <Link to={'/test'}><p>Inicio</p></Link>
+                        <Link to={'/test'}><p>Listar productos</p></Link>
                     </Button>
                 </div>
             </div>

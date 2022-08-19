@@ -14,28 +14,28 @@ export const Menu = ({ }) => {
         <nav className={style.menu}>
           <ul>
             <li>
-              <Link to={'/'}>Inicio</Link>
               <span className="material-icons-round">
                 home
               </span>
+              <Link to={'/'}>Inicio</Link>
             </li>
             <li>
-              <Link to={'/'}>Empleados</Link>
               <span className="material-icons-round">
                 people_alt
               </span>
+              <Link to={'/'}>Empleados</Link>
             </li>
             <li>
-              <Link to={'/'}>Inventario</Link>
               <span className="material-icons-round">
                 inventory
               </span>
+              <Link to={'/'}>Inventario</Link>
             </li>
             <li>
-              <Link to={'/'}>Ventas</Link>
               <span className="material-icons-round">
                 sell
               </span>
+              <Link to={'/'}>Ventas</Link>
             </li>
 
           </ul>

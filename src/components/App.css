@@ -139,7 +139,7 @@ ul, ol, li {
 
   /* Box shadow */
   --box-shadow-1: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
-  --box-shadow-2: 0px 0px 15px 5px rgba(0, 0, 0, 0.2);
+  --box-shadow-2: 0px 15px 10px 15px rgba(0, 0, 0, 0.2);
 
 
   /* Font weight */
@@ -203,6 +203,23 @@ ul, ol, li {
 
 .icon_btn:hover {
   background-color: var(--orange);
+}
+
+.app_container {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: calc(100% - 375px);
+  transition: all .5s ease;
+}
+
+.app_container.grow {
+  width: calc(100% - 75px);
+}
+
+textarea {
+  resize: vertical;
 }
 
 

@@ -7,11 +7,16 @@ import PropTypes from 'prop-types'
 import style from './inputs.module.css'
 import css from 'classnames'
 
-export const Button = ({ variant, children, action }) => {
+export const Button = ({ variant, children, show, func }) => {
+
+    const handleAction = (e) => {
+        e.preventDefault()
+        func()
+    }
 
     return (
         <>
-            <button className={css(style.button, style[variant])} onClick={action}>
+            <button className={css(style.button, style[variant], !show && style.hidden)} onClick={(e) => handleAction(e)}>
                 {children}
             </button>
         </>

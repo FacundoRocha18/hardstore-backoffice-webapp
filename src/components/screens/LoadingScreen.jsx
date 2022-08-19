@@ -4,7 +4,7 @@ import React from 'react'
 import style from './LoadingScreen.module.css'
 import css from 'classnames'
 
-export const LoadingScreen = () => {
+export const Loading = () => {
 
   return (
     <>

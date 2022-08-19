@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import style from './Login.module.css'
 import css from 'classnames'
 
-import { LoadingScreen } from '../../components'
+import { Loading } from '../../components'
 
-export const LoginScreen = ({ onLogin }) => {
+export const Login = ({ onLogin }) => {
 
   const [showLoading, setLoading] = useState();
 
@@ -46,7 +46,7 @@ export const LoginScreen = ({ onLogin }) => {
 
   if (showLoading) {
     return (
-      <LoadingScreen />
+      <Loading />
     )
   }
 
