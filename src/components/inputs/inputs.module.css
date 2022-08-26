@@ -1,17 +1,23 @@
-/* <Button /> component */
+/* Start of <Button /> component */
 
 .button {
+    align-items: center;
     background-color: transparent;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
     padding: 10px 20px;
+    width: 115px;
     transition: all .3s ease;
 }
 
 .button p {
     color: var(--text-dark);
 }
+
+/* Start of <Button /> variants */
 
 .button.btn {
     background: var(--primary-btn-gradient);
@@ -30,11 +36,26 @@
     background-color: var(--orange);
 }
 
+.button.save-btn {
+    background: var(--success-btn-gradient);
+    
+}
+
+.button.save-btn:hover {
+    background: var(--success-btn-gradient-hover);
+}
+
+.button.cancel-btn {
+    background: var(--critical-btn-gradient);
+    
+}
+
+.button.cancel-btn:hover {
+    background: var(--critical-btn-gradient-hover);
+}
+
 .button.red-btn {
-    align-items: center;
     border-radius: 50px;
-    display: flex;
-    justify-content: center;
     padding: 10px;
     width: 25px;
     height: 25px;
@@ -50,7 +71,13 @@
     background: rgba(34, 34, 34, 0.50);
 }
 
-/* <ImagePreview /> component */
+/* End of <Button /> variants */
+
+/* End of <Button /> Component */
+
+
+
+/* Start of <ImagePreview /> component */
 
 
 .preview_container {
@@ -63,9 +90,11 @@
 
 .image_preview_label {
     background-color: var(--orange);
+    border: none !important;
     border-radius: 5px;
     max-height: 35px;
     max-width: 35px;
+    padding: 0px !important;
     transition: all .3s ease-in-out;
 }
 
@@ -80,17 +109,59 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
-    max-height: 35px;
+    max-height: 100%;
     max-width: 35px;
 }
 
-/* <FormGroup /> component */
+/* End of <ImagePreview /> component */
+
+
+/* Start of <FormGroup /> component */
 
 .form_group {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     gap: 15px;
+    width: 100%;
 }
+
+.form_group.flex {
+    background-color: firebrick;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.form_group label {
+    border: solid 1px var(--orange);
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 5px;
+    max-width: 175px;
+    text-align: left;
+}
+
+.form_group input,
+.form_group textarea {
+    border: solid 1px rgb(24, 24, 24);
+    border-radius: 5px;
+    padding: 8px 10px;
+}
+
+.form_group input {
+    width: 250px;
+}
+
+.form_group input[type=number] {
+    width: 100px;
+
+}
+
+/* End of <FormGroup /> component */
+
+/* Start of funcionality classes */
 
 .grow {
     background-color: transparent;
@@ -101,11 +172,6 @@
 
 .grow:hover {
     background-color: transparent;
-}
-
-
-.button.hidden {
-    display: none;
 }
 
 .hidden {

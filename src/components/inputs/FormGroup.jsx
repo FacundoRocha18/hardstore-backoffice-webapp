@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import style from './inputs.module.css'
 import css from 'classnames'
 
-export const FormGroup = ({ name, text, type, placeholder, children }) => {
+export const FormGroup = ({ name, text, type, placeholder, children, disabled, flex }) => {
 
     if (children) {
         return (
@@ -23,9 +23,9 @@ export const FormGroup = ({ name, text, type, placeholder, children }) => {
     if (!children) {
         return (
             <>
-                <div className={style.form_group}>
+                <div className={css(style.form_group, flex && style.flex)}>
                     <label htmlFor={name}>{ text }</label>
-                    <input type={type} name={name} id={name} placeholder={placeholder} />
+                    <input type={type} name={name} id={name} placeholder={placeholder} disabled={disabled} />
                 </div>
             </>
         )
@@ -38,5 +38,6 @@ FormGroup.propTypes = {
     text: PropTypes.string,
     type: PropTypes.string,
     placeholder: PropTypes.string,
-    children: PropTypes.array
+    children: PropTypes.array,
+    disabled: PropTypes.bool,
 }

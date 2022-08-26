@@ -28,6 +28,15 @@
     width: 100%;
 }
 
+.price_container label {
+    border: none;
+    max-width: 100px;
+}
+
+.price_container label.grow {
+    max-width: 150px;
+}
+
 .hidden {
     display: none;
 }

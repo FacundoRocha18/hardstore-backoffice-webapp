@@ -26,13 +26,7 @@ export const AddProducts = () => {
       name: 'product_stock',
       text: 'Cantidad entrante del producto: ',
       type: 'number',
-      placeholder: 'Cantidad'
-    },
-    {
-      name: 'product_name',
-      text: 'Nombre del producto',
-      type: 'text',
-      placeholder: 'Nombre'
+      placeholder: '0'
     }
   ]
 
@@ -48,7 +42,7 @@ export const AddProducts = () => {
               {
                 fields.map(({ name, text, type, placeholder }, index) => (
                   <FormGroup
-                    key={index} 
+                    key={index}
                     name={name}
                     text={text}
                     type={type}
@@ -62,23 +56,17 @@ export const AddProducts = () => {
               </FormGroup>
               <FormGroup>
                 <label htmlFor="product_image">Imagen del producto: </label>
-                <ImagePreview htmlFor='product_image' />
+                <ImagePreview For='product_image' />
               </FormGroup>
               <div className={style.price_container}>
-                <FormGroup name='product_cost' type='number' placeholder='0' />
-                <FormGroup name='product_cost' type='number' placeholder='0' />
-                <div className={style.form_group}>
-                  <label htmlFor="product_iva">IVA: </label>
-                  <input type="number" name="product_iva" id="product_iva" disabled readOnly />
-                </div>
-                <div className={style.form_group}>
-                  <label htmlFor="product_price">Precio de venta: </label>
-                  <input type="number" name="product_price" id="product_price" />
-                </div>
+                <FormGroup name='product_cost' text='Costo del producto' type='number' placeholder='0' />
+                <FormGroup name='product_iva' text='IVA del producto' type='number' placeholder='0' disabled={true} />
+                <FormGroup name='product_price' text='Precio de venta' type='number' placeholder='0' disabled={true} />
               </div>
-              <div className={style.form_group}>
-
-              </div>
+              <FormGroup flex={true}>
+                <Button variant='save-btn' show={true}><p>Guardar</p></Button>
+                <Button variant='cancel-btn' show={true}><p>Cancelar</p></Button>
+              </FormGroup>
             </form>
           </div>
         </div>

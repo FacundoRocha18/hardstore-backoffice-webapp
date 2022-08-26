@@ -9,7 +9,7 @@ import { Button } from '../'
 
 const previewdefault = require('../../public/img/previewdefault.png');
 
-export const ImagePreview = ({ htmlFor }) => {
+export const ImagePreview = ({ For }) => {
 
     const [preview, setPreview] = useState(previewdefault);
 
@@ -36,7 +36,7 @@ export const ImagePreview = ({ htmlFor }) => {
     return (
         <>
             <div className={style.preview_container}>
-                <label className={css(style.image_preview_label, imageLoaded && style.grow)} htmlFor={htmlFor}>
+                <label className={css(style.image_preview_label, imageLoaded && style.grow)} htmlFor={For}>
                     <Button variant='red-btn' show={imageLoaded} func={deletePreview}>
                         <span className="material-icons-round">
                             close
@@ -49,7 +49,7 @@ export const ImagePreview = ({ htmlFor }) => {
                         className={css(style.image_preview, imageLoaded && style.grow)}>
                     </img>
                 </label>
-                <input type={'file'} name={htmlFor} id={htmlFor} className={style.hidden} onChange={(e) => handleLoad(e)} />
+                <input type={'file'} name={For} id={For} className={style.hidden} onChange={(e) => handleLoad(e)} />
             </div>
         </>
     )
