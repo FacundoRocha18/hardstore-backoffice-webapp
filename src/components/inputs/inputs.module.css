@@ -38,7 +38,7 @@
 
 .button.save-btn {
     background: var(--success-btn-gradient);
-    
+
 }
 
 .button.save-btn:hover {
@@ -47,7 +47,7 @@
 
 .button.cancel-btn {
     background: var(--critical-btn-gradient);
-    
+
 }
 
 .button.cancel-btn:hover {
@@ -89,11 +89,15 @@
 }
 
 .image_preview_label {
+    align-items: center;
     background-color: var(--orange);
     border: none !important;
     border-radius: 5px;
-    max-height: 35px;
-    max-width: 35px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    max-width: 50px;
     padding: 0px !important;
     transition: all .3s ease-in-out;
 }
@@ -102,15 +106,29 @@
     background-color: var(--orange-hover);
 }
 
+.images_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
 .image_preview {
-    align-items: center;
-    border: solid 1px var(--orange);
     border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    max-height: 100%;
-    max-width: 35px;
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.alert_label {
+    
+    position: fixed;
+    right: 30px;
+    top: 30px;
+}
+
+.alert_label.warning {
+    background: var(--critical-btn-gradient);
+    border: solid 1px rgb(114, 11, 11) !important;
 }
 
 /* End of <ImagePreview /> component */
@@ -136,11 +154,11 @@
 
 .form_group label {
     border: solid 1px var(--orange);
-    border-radius: 5px;
     box-sizing: border-box;
+    border-radius: 5px;
     padding: 5px;
-    max-width: 175px;
-    text-align: left;
+    width: 200px;
+    text-align: center;
 }
 
 .form_group input,
