@@ -4,7 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 /* CSS Styles --------------------- */
-import style from './inputs.module.css'
+import style from './Button.module.css'
 import css from 'classnames'
 
 export const Button = ({ variant, children, show, func }) => {

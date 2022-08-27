@@ -9,6 +9,22 @@ import { Button, ImagePreview, FormGroup } from '../'
 
 export const AddProducts = () => {
 
+  const [price, setPrice] = useState(0);
+
+  const [quantity, setQuantity] = useState(1);
+
+  const [total, setTotal] = useState(0);
+
+  const iva = 0.25;
+
+  const ivaCalc = price * iva;
+
+  useEffect(() => {
+    if ( price < 1 ) setPrice(0);
+    setTotal(parseFloat(price) + parseFloat(ivaCalc))
+  }, [price])
+
+
   const fields = [
     {
       name: 'product_name',
@@ -21,14 +37,16 @@ export const AddProducts = () => {
       text: 'Código SKU del producto: ',
       type: 'text',
       placeholder: 'SKU'
-    },
-    {
-      name: 'product_stock',
-      text: 'Cantidad entrante del producto: ',
-      type: 'number',
-      placeholder: '0'
     }
   ]
+
+  const handleOnChange = ({ target }) => {
+    setPrice(target.value)
+  }
+
+  const onQuantityChange = ({ target }) => {
+    setQuantity(target.value)
+  }
 
   return (
     <>
@@ -51,22 +69,35 @@ export const AddProducts = () => {
                 ))
               }
               <FormGroup>
+                <label htmlFor="product_qty">Cantidad:</label>
+                <input type="number" name="product_qty" id="product_qty" value={quantity} min='1' step='1' onChange={(e) => onQuantityChange(e)} />
+              </FormGroup>
+              <FormGroup>
                 <label htmlFor="product_description">Descripción del producto: </label>
                 <textarea name="product_description" id="product_description" cols="80" rows="10"></textarea>
               </FormGroup>
               <FormGroup>
-                <label htmlFor="product_image">Imagen del producto: </label>
+                <label htmlFor="product_image">Imagen(es) del producto: </label>
                 <ImagePreview For='product_image' />
               </FormGroup>
               <div className={style.price_container}>
-                <FormGroup name='product_cost' text='Costo del producto' type='number' placeholder='0' />
-                <FormGroup name='product_iva' text='IVA del producto' type='number' placeholder='0' disabled={true} />
-                <FormGroup name='product_price' text='Precio de venta' type='number' placeholder='0' disabled={true} />
+                <FormGroup>
+                  <label htmlFor="product_cost">Precio sin IVA:</label>
+                  <input type="number" name="product_cost" id="product_cost" value={price} min='0' step='10' onChange={(e) => handleOnChange(e)} />
+                </FormGroup>
+                <FormGroup>
+                  <label htmlFor="product_iva">IVA (25%):</label>
+                  <input type="number" name="product_iva" id="product_iva" value={ivaCalc} disabled />
+                </FormGroup>
+                <FormGroup name='product_price' text='Precio de venta (IVA inc.):' type='number' placeholder='0' disabled={true} value={total} >
+                  <label htmlFor="product_price">Precio total (IVA inc.):</label>
+                  <input type="number" name="product_price" id="product_price" value={total} disabled />
+                </FormGroup>
               </div>
-              <FormGroup flex={true}>
+              <div className={style.buttons_container}>
                 <Button variant='save-btn' show={true}><p>Guardar</p></Button>
                 <Button variant='cancel-btn' show={true}><p>Cancelar</p></Button>
-              </FormGroup>
+              </div>
             </form>
           </div>
         </div>

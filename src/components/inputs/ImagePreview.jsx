@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 /* CSS Styles --------------------- */
-import style from './inputs.module.css'
+import style from './ImagePreview.module.css'
 import css from 'classnames'
 
 /* Components --------------------- */
@@ -11,9 +11,20 @@ export const ImagePreview = ({ For }) => {
 
     const [show, setShow] = useState(false)
 
-    const [previews, setPreview] = useState([]);
+    const [imageList, setImageList] = useState([]);
 
-    const [imageLoaded, setImageLoaded] = useState(false);
+    const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+    const [isListFull, setIsListFull] = useState(false);
+
+    useEffect(() => {
+        if (imageList.length >= 6) {
+            setIsListFull(true)
+        } else {
+            setIsListFull(false)
+        }
+    }, [imageList])
+
 
     const handleLoad = ({ target }) => {
 
@@ -23,16 +34,14 @@ export const ImagePreview = ({ For }) => {
         console.log(file)
 
         reader.onload = ({ target }) => {
-            const exists = previews.find((x) => x === target.result)
+            const exists = imageList.find((x) => x === target.result)
 
-            console.log(exists)
-
-            if (!exists) {
-                setPreview([
+            if (!exists && !isListFull) {
+                setImageList([
                     target.result,
-                    ...previews
+                    ...imageList
                 ]);
-                return setImageLoaded(true);
+                return setIsImageLoaded(true);
             }
 
             setShow(true)
@@ -44,42 +53,45 @@ export const ImagePreview = ({ For }) => {
         reader.readAsDataURL(file)
     }
 
-    const deletePreview = (item) => {
+    const deleteImage = (item) => {
 
-        const exists = previews.find((x) => x === item);
+        const exists = imageList.find((x) => x === item);
 
-        if (exists) setPreview(previews.filter((x) => x !== item))
-        if (previews.length <= 1) setImageLoaded(false);
+        if (exists) setImageList(imageList.filter((x) => x !== item))
+        if (imageList.length <= 1) setIsImageLoaded(false);
     }
 
     return (
         <>
             {
                 <div className={style.preview_container}>
-                    <label className={css(style.image_preview_label)} htmlFor={For}>
-                        <span className="material-icons-round">
-                            add
-                        </span>
-                    </label>
                     <div className={style.images_container}>
                         {
-                            previews.map((item, index) => (
+                            imageList.map((item, index) => (
                                 <div key={index} className={style.image_card}>
-                                    <Button variant='red-btn' show={imageLoaded} func={() => deletePreview(item)}>
+                                    <Button variant='delete-btn' show={isImageLoaded} func={() => deleteImage(item)}>
                                         <span className="material-icons-round">
                                             close
                                         </span>
                                     </Button>
                                     <img
                                         src={item}
-                                        alt="Imagen"
+                                        alt={item.name}
                                         id='preview'
-                                        className={css(style.image_preview, !imageLoaded && style.hidden, imageLoaded && style.grow)}>
+                                        className={css(style.image_preview, !isImageLoaded && style.hidden, isImageLoaded && style.grow)}>
                                     </img>
                                 </div>
                             ))
                         }
+                        <div className={css(isListFull && style.hidden, style.image_card, style.no_background)}>
+                            <label className={css(style.image_preview_label, isListFull && style.hidden)} htmlFor={For}>
+                                <span className="material-icons-round">
+                                    add
+                                </span>
+                            </label>
+                        </div>
                     </div>
+
                     <input type={'file'} name={For} id={For} className={style.hidden} onChange={(e) => handleLoad(e)} />
                     <label className={css(style.alert_label, style['warning'], !show && style.hidden)}>
                         No se pueden subir imagenes repetidas

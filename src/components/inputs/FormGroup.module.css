@@ -1,0 +1,36 @@
+/* Start of <FormGroup /> component */
+
+.form_group {
+    align-items: flex-start;
+    display: flex;
+    gap: 15px;
+    width: fit-content;
+}
+
+.form_group label {
+    background-color: rgba(19, 18, 18, 0.500);
+    border: solid 1px var(--text-dark);
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 5px;
+    width: 200px;
+    text-align: center;
+}
+
+.form_group input,
+.form_group textarea {
+    border: solid 1px rgb(24, 24, 24);
+    border-radius: 5px;
+    padding: 8px 10px;
+}
+
+.form_group input {
+    width: 250px;
+}
+
+.form_group input[type=number] {
+    width: 100px;
+
+}
+
+/* End of <FormGroup /> component */

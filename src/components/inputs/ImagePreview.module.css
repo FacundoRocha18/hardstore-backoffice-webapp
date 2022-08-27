@@ -1,0 +1,94 @@
+/* Start of <ImagePreview /> component */
+.preview_container {
+    align-items: flex-start;
+    display: flex;
+    gap: 20px;
+    height: fit-content;
+    width: fit-content;
+}
+
+.image_preview_label {
+    align-items: center;
+    background-color: rgba(19, 18, 18, 0.500);
+    border: solid 1px var(--orange) !important;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    min-height: 167px;
+    max-width: 100%;
+    padding: 0px !important;
+    transition: all .3s ease-in-out;
+}
+
+.image_preview_label span {
+    font-size: 45px;
+}
+
+.image_preview_label:hover {
+    background-color: var(--orange-hover);
+}
+
+.images_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.image_card {
+    background-color: #fff;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 5px;
+    min-height: 167px;
+}
+
+.image_card.no_background {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image_card.no_background.hidden {
+    display: none;
+}
+
+.image_preview {
+    border-radius: 5px;
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.alert_label {
+    
+    position: fixed;
+    right: 30px;
+    top: 30px;
+}
+
+.alert_label.warning {
+    background: var(--critical-btn-gradient);
+    border: solid 1px rgb(114, 11, 11) !important;
+}
+
+/* End of <ImagePreview /> component */
+
+/* Start of funcionality classes */
+
+.grow {
+    background-color: transparent;
+    max-height: 150px;
+    max-width: 150px;
+    transition: all .3s ease-in-out;
+}
+
+.grow:hover {
+    background-color: transparent;
+}
+
+.hidden {
+    display: none;
+}
