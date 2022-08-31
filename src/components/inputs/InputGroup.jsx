@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 /* CSS Styles --------------------- */
-import style from './FormGroup.module.css'
+import style from './InputGroup.module.css'
 import css from 'classnames'
 
 export const FormGroup = ({ name, text, type, placeholder, children, disabled, flex, value }) => {

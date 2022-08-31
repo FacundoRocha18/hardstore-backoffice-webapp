@@ -18,11 +18,10 @@ export const ImagePreview = ({ For }) => {
     const [isListFull, setIsListFull] = useState(false);
 
     useEffect(() => {
-        if (imageList.length >= 6) {
-            setIsListFull(true)
-        } else {
-            setIsListFull(false)
+        if (imageList.length < 6) {
+           return setIsListFull(false)
         }
+        setIsListFull(true);
     }, [imageList])
 
 

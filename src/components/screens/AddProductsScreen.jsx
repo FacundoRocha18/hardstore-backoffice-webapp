@@ -5,7 +5,7 @@ import style from './AddProducts.module.css'
 import css from 'classnames'
 
 /* Components --------------------- */
-import { Button, ImagePreview, FormGroup } from '../'
+import { Button, ImagePreview, FormGroup as InputGroup } from '../'
 
 export const AddProducts = () => {
 
@@ -20,7 +20,7 @@ export const AddProducts = () => {
   const ivaCalc = price * iva;
 
   useEffect(() => {
-    if ( price < 1 ) setPrice(0);
+    if (price < 1) setPrice(0);
     setTotal(parseFloat(price) + parseFloat(ivaCalc))
   }, [price])
 
@@ -59,7 +59,7 @@ export const AddProducts = () => {
             <form >
               {
                 fields.map(({ name, text, type, placeholder }, index) => (
-                  <FormGroup
+                  <InputGroup
                     key={index}
                     name={name}
                     text={text}
@@ -68,31 +68,31 @@ export const AddProducts = () => {
                   />
                 ))
               }
-              <FormGroup>
+              <InputGroup>
                 <label htmlFor="product_qty">Cantidad:</label>
                 <input type="number" name="product_qty" id="product_qty" value={quantity} min='1' step='1' onChange={(e) => onQuantityChange(e)} />
-              </FormGroup>
-              <FormGroup>
+              </InputGroup>
+              <InputGroup>
                 <label htmlFor="product_description">Descripción del producto: </label>
                 <textarea name="product_description" id="product_description" cols="80" rows="10"></textarea>
-              </FormGroup>
-              <FormGroup>
+              </InputGroup>
+              <InputGroup>
                 <label htmlFor="product_image">Imagen(es) del producto: </label>
                 <ImagePreview For='product_image' />
-              </FormGroup>
+              </InputGroup>
               <div className={style.price_container}>
-                <FormGroup>
+                <InputGroup>
                   <label htmlFor="product_cost">Precio sin IVA:</label>
                   <input type="number" name="product_cost" id="product_cost" value={price} min='0' step='10' onChange={(e) => handleOnChange(e)} />
-                </FormGroup>
-                <FormGroup>
+                </InputGroup>
+                <InputGroup>
                   <label htmlFor="product_iva">IVA (25%):</label>
                   <input type="number" name="product_iva" id="product_iva" value={ivaCalc} disabled />
-                </FormGroup>
-                <FormGroup name='product_price' text='Precio de venta (IVA inc.):' type='number' placeholder='0' disabled={true} value={total} >
+                </InputGroup>
+                <InputGroup name='product_price' text='Precio de venta (IVA inc.):' type='number' placeholder='0' disabled={true} value={total} >
                   <label htmlFor="product_price">Precio total (IVA inc.):</label>
                   <input type="number" name="product_price" id="product_price" value={total} disabled />
-                </FormGroup>
+                </InputGroup>
               </div>
               <div className={style.buttons_container}>
                 <Button variant='save-btn' show={true}><p>Guardar</p></Button>
