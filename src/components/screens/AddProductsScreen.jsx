@@ -7,6 +7,9 @@ import css from 'classnames'
 /* Components --------------------- */
 import { Button, ImagePreview, FormGroup as InputGroup } from '../'
 
+/* API --------------------- */
+import { newProduct } from '../../API'
+
 export const AddProducts = () => {
 
   const [price, setPrice] = useState(0);
@@ -14,6 +17,11 @@ export const AddProducts = () => {
   const [quantity, setQuantity] = useState(1);
 
   const [total, setTotal] = useState(0);
+
+  const [data, setData] = useState({
+    name: null,
+    sku: null
+  });
 
   const iva = 0.25;
 
@@ -24,28 +32,33 @@ export const AddProducts = () => {
     setTotal(parseFloat(price) + parseFloat(ivaCalc))
   }, [price])
 
+  useEffect(() => {
+    console.log(data)
+  }, [data])
 
-  const fields = [
-    {
-      name: 'product_name',
-      text: 'Nombre del producto: ',
-      type: 'text',
-      placeholder: 'Nombre'
-    },
-    {
-      name: 'product_sku',
-      text: 'Código SKU del producto: ',
-      type: 'text',
-      placeholder: 'SKU'
-    }
-  ]
 
   const handleOnChange = ({ target }) => {
     setPrice(target.value)
   }
 
-  const onQuantityChange = ({ target }) => {
-    setQuantity(target.value)
+  const onDataChange = ({ target }) => {
+    switch (target.name) {
+
+      case 'product_name':
+        setData({
+          ...data,
+          name: target.value
+        })
+        break;
+
+      case 'product_sku':
+
+        setData({
+          ...data,
+          sku: target.value
+        })
+        break;
+    }
   }
 
   return (
@@ -56,21 +69,18 @@ export const AddProducts = () => {
             <h2>Subir nuevo producto</h2>
           </div>
           <div className={style.form_container}>
-            <form >
-              {
-                fields.map(({ name, text, type, placeholder }, index) => (
-                  <InputGroup
-                    key={index}
-                    name={name}
-                    text={text}
-                    type={type}
-                    placeholder={placeholder}
-                  />
-                ))
-              }
+            <form>
+              <InputGroup>
+                <label htmlFor="product_name">Nombre del producto: </label>
+                <input type="text" name="product_name" id="product_name" onChange={(e) => onDataChange(e)} placeholder='Nombre' autoComplete='off' />
+              </InputGroup>
+              <InputGroup>
+                <label htmlFor="product_sku">Código SKU del producto: </label>
+                <input type="text" name="product_sku" id="product_sku" onChange={(e) => onDataChange(e)} placeholder='SKU' autoComplete='off' />
+              </InputGroup>
               <InputGroup>
                 <label htmlFor="product_qty">Cantidad:</label>
-                <input type="number" name="product_qty" id="product_qty" value={quantity} min='1' step='1' onChange={(e) => onQuantityChange(e)} />
+                <input type="number" name="product_qty" id="product_qty" defaultValue='0' min='1' step='1' onChange={(e) => onDataChange(e)} />
               </InputGroup>
               <InputGroup>
                 <label htmlFor="product_description">Descripción del producto: </label>
@@ -95,7 +105,7 @@ export const AddProducts = () => {
                 </InputGroup>
               </div>
               <div className={style.buttons_container}>
-                <Button variant='save-btn' show={true}><p>Guardar</p></Button>
+                <Button variant='save-btn' func={() => newProduct(data)} show={true}><p>Guardar</p></Button>
                 <Button variant='cancel-btn' show={true}><p>Cancelar</p></Button>
               </div>
             </form>

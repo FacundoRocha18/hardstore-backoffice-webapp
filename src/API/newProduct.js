@@ -1,24 +1,25 @@
-const newProduct = async (data) => {
+
+export const newProduct = (data) => {
+
+    console.log(data)
 
     const url = `https://api.hardstore.store/api/auth/employees/login`
 
-    const devURL = `http://127.0.0.1:8000/api/product/new`
+    const requestHeaders = new Headers();
+    requestHeaders.append("Content-Type", "application/json;charset=utf-8");
 
-    const params = {
+    const urlencoded = new URLSearchParams();
+    urlencoded.append('requestData', JSON.stringify(data));
+
+    const requestOptions = {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
+        headers: requestHeaders,
         body: JSON.stringify(data)
     };
 
-    const response = await fetch(devURL, params)
-    
-    const { ok, message } = await response.json()
-        
-    return {
-        status: ok,
-        message
-    }
+    fetch(`http://127.0.0.1:8000/api/products/new`, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error))
 
 }
