@@ -94,7 +94,7 @@ export const ImagePreview = ({ setImageName, imageList, setImageList, name }) =>
                         </div>
                     </div>
 
-                    <input type={'file'} name={name} id={name} className={style.hidden} onChange={(e) => handleLoad(e)} />
+                    <input type={'file'} accept={'image/*'} name={name} id={name} className={style.hidden} onChange={(e) => handleLoad(e)} />
                     <label className={css(style.alert_label, style['warning'], !show && style.hidden)}>
                         No se pueden subir imagenes repetidas
                     </label>

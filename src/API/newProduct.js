@@ -1,8 +1,6 @@
 
 export const newProduct = (data) => {
 
-    console.log(data)
-
     const url = `https://api.hardstore.store/api/auth/employees/login`
 
     const requestHeaders = new Headers();

@@ -72,6 +72,29 @@
     background: rgba(34, 34, 34, 0.50);
 }
 
+.button.reset-btn p {
+    color: var(--blue);
+    transition: all .3s ease;
+}
+
+.button.reset-btn:hover p {
+    color: var(--blue-hover);
+}
+
+.button.select-btn {
+    background-color: transparent;
+    width: 100%;
+    transition: all .3s ease;
+}
+
+.button.select-btn:hover {
+    background-color: var(--blue-hover);
+}
+
+.button.select-btn p {
+    color: #fff;
+}
+
 /* End of <Button /> variants */
 
 /* End of <Button /> Component */
