@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types';
 
 /* CSS Styles --------------------- */
 import style from './ImagePreview.module.css'
@@ -7,11 +8,9 @@ import css from 'classnames'
 /* Components --------------------- */
 import { Button } from '../'
 
-export const ImagePreview = ({ For }) => {
+export const ImagePreview = ({ setImageName, imageList, setImageList, name }) => {
 
     const [show, setShow] = useState(false)
-
-    const [imageList, setImageList] = useState([]);
 
     const [isImageLoaded, setIsImageLoaded] = useState(false);
 
@@ -25,10 +24,14 @@ export const ImagePreview = ({ For }) => {
     }, [imageList])
 
 
-    const handleLoad = ({ target }) => {
+    const handleLoad = ( { target } ) => {
 
         const [file] = target.files;
         const reader = new FileReader();
+
+        if ( file ) {
+            setImageName(file.name);
+        }
 
         console.log(file)
 
@@ -83,7 +86,7 @@ export const ImagePreview = ({ For }) => {
                             ))
                         }
                         <div className={css(isListFull && style.hidden, style.image_card, style.no_background)}>
-                            <label className={css(style.image_preview_label, isListFull && style.hidden)} htmlFor={For}>
+                            <label className={css(style.image_preview_label, isListFull && style.hidden)} htmlFor={name}>
                                 <span className="material-icons-round">
                                     add
                                 </span>
@@ -91,7 +94,7 @@ export const ImagePreview = ({ For }) => {
                         </div>
                     </div>
 
-                    <input type={'file'} name={For} id={For} className={style.hidden} onChange={(e) => handleLoad(e)} />
+                    <input type={'file'} name={name} id={name} className={style.hidden} onChange={(e) => handleLoad(e)} />
                     <label className={css(style.alert_label, style['warning'], !show && style.hidden)}>
                         No se pueden subir imagenes repetidas
                     </label>
@@ -99,4 +102,10 @@ export const ImagePreview = ({ For }) => {
             }
         </>
     )
+}
+
+
+ImagePreview.propTypes = {
+    imageList: PropTypes.array.isRequired,
+    setImageList: PropTypes.func.isRequired
 }
