@@ -36,6 +36,13 @@ export const SelectBox = ({ cats, setSelectedCat }) => {
     )
 }
 
+SelectBox.defaultProps = {
+    cats: {
+        cat_name: 'Category',
+        cat_id: 0
+    },
+}
+
 SelectBox.propTypes = {
     cats: PropTypes.array.isRequired,
     setSelectedCat: PropTypes.func.isRequired,

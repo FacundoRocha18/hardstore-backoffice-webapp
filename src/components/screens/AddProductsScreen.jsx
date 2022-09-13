@@ -129,7 +129,7 @@ export const AddProducts = () => {
               <div className={style.buttons_container}>
 
                 <Button variant='save-btn' func={() => newProduct(data)} show={true}><p>Guardar</p></Button>
-                <Button variant='reset-btn' show={true}><p>Limpiar</p></Button>
+                <Button variant='reset-btn' show={true}><p>Borrar</p></Button>
                 <Button variant='cancel-btn' show={true}><p>Cancelar</p></Button>
 
               </div>
