@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -9,28 +9,49 @@ import css from 'classnames'
 /* Components --------------------- */
 import { Button } from '../'
 
-export const SelectBox = ({ cats, setSelectedCat }) => {
+export const SelectBox = ({ cats, selectedCat, setSelectedCat, required }) => {
 
-    const handleSelect = ({target}) => {
-        setSelectedCat(target.value)
+    const [deployCats, setDeployCats] = useState(false);
+
+    const [highlight, setHighlight] = useState(false);
+
+    const handleSelect = (e) => {
+        e.preventDefault();
+        setSelectedCat(e.target.name)
+        setHighlight(e.target.name)
+    }
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        setDeployCats(!deployCats);
     }
 
     return (
         <>
             <div className={style.container}>
-                <ul>
-                    {
-                        cats.map(({ cat_name }, index) => (
-                            <li key={index}>
-                                <Button variant='select-btn' func={handleSelect} >
-                                    <p>
-                                        {cat_name}
-                                    </p>
-                                </Button>
-                            </li>
-                        ))
-                    }
-                </ul>
+                <div className={style.column}>
+                    <input className={css(style.selected_cat, deployCats && style.deploy_cats)} type="text" name="selected_cat" id="selected_cat" placeholder='Seleccione una categoría' defaultValue={selectedCat} required={required} />
+                    <div className={css(style.cats_container, !deployCats && style.hidden)}>
+                        <ul>
+                            {
+                                cats.map(({ cat_id, cat_name }, index) => (
+                                    <li key={index}>
+                                        <button name={cat_name} className={css(style.cat_btn, highlight === cat_name && style.highlight)} onClick={(e) => handleSelect(e)} >
+                                        {cat_id} - {cat_name}
+                                        </button>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div className={style.button_container}>
+                    <button className={style.deploy_btn} onClick={(e) => handleClick(e)}>
+                        <span className={css("material-icons-round", deployCats && style.rotate)}>
+                            expand_more
+                        </span>
+                    </button>
+                </div>
             </div>
         </>
     )
@@ -40,10 +61,11 @@ SelectBox.defaultProps = {
     cats: {
         cat_name: 'Category',
         cat_id: 0
-    },
+    }
 }
 
 SelectBox.propTypes = {
     cats: PropTypes.array.isRequired,
+    selectedCat: PropTypes.string,
     setSelectedCat: PropTypes.func.isRequired,
 }

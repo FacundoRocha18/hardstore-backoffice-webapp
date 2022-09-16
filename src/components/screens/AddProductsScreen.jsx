@@ -30,7 +30,7 @@ export const AddProducts = () => {
   const [data, setData] = useState({
     name: null,
     sku: null,
-    qty: 0,
+    qty: 1,
     desc: null,
     img: [],
     price: 0,
@@ -42,19 +42,17 @@ export const AddProducts = () => {
   const ivaCalc = price * iva;
 
   useEffect(() => {
-    console.log(selectedCat)
-
-  }, [selectedCat])
-  
+    if (price < 1) setPrice(0);
+    setTotal(parseInt(price) + parseInt(ivaCalc))
+  }, [price])
 
   useEffect(() => {
-    if (price < 1) setPrice(0);
-    setTotal(parseFloat(price) + parseFloat(ivaCalc))
+    if (total < 1) setTotal(0);
     setData({
       ...data,
-      price: total
+      price: total.toFixed(0)
     })
-  }, [price])
+  }, [total])
 
   useEffect(() => {
     setData({
@@ -63,8 +61,20 @@ export const AddProducts = () => {
     })
   }, [imageName])
 
+  useEffect(() => {
+    setData({
+      ...data,
+      cat: selectedCat
+    })
+  }, [selectedCat])
+
   const handleOnChange = ({ target }) => {
     setPrice(target.value)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    return newProduct(data);
   }
 
   return (
@@ -75,43 +85,43 @@ export const AddProducts = () => {
             <h2>Subir nuevo producto</h2>
           </div>
           <div className={style.form_container}>
-            <form>
+            <form onSubmit={(e) => handleSubmit(e)}>
 
               <InputGroup>
                 <label htmlFor="product_name">Nombre del producto: </label>
-                <input type="text" name="product_name" id="product_name" onChange={(e) => onDataChange(e, data, setData)} placeholder='Nombre' autoComplete='off' />
+                <input type="text" name="product_name" id="product_name" onChange={(e) => onDataChange(e, data, setData)} placeholder='Nombre' autoComplete='off' required />
               </InputGroup>
 
               <InputGroup>
                 <label htmlFor="product_sku">Código SKU del producto: </label>
-                <input type="text" name="product_sku" id="product_sku" onChange={(e) => onDataChange(e, data, setData)} placeholder='SKU' autoComplete='off' />
+                <input type="text" name="product_sku" id="product_sku" onChange={(e) => onDataChange(e, data, setData)} placeholder='SKU' autoComplete='off' required />
               </InputGroup>
 
               <InputGroup>
                 <label htmlFor="product_qty">Cantidad:</label>
-                <input type="number" name="product_qty" id="product_qty" defaultValue='0' min='1' step='1' onChange={(e) => onDataChange(e, data, setData)} />
+                <input type="number" name="product_qty" id="product_qty" defaultValue='1' min='1' step='1' onChange={(e) => onDataChange(e, data, setData)} required />
               </InputGroup>
 
               <InputGroup>
-                <label htmlFor="product_category">Categoría del producto:</label>
-                <SelectBox cats={cats} setSelectedCat={setSelectedCat} />
+                <label>Categoría del producto:</label>
+                <SelectBox cats={cats} selectedCat={selectedCat} setSelectedCat={setSelectedCat} required={true} />
               </InputGroup>
 
               <InputGroup>
                 <label htmlFor="product_description">Descripción del producto: </label>
-                <textarea name="product_description" id="product_description" cols="80" rows="10" onChange={(e) => onDataChange(e, data, setData)} ></textarea>
+                <textarea name="product_description" id="product_description" cols="80" rows="10" onChange={(e) => onDataChange(e, data, setData)} required ></textarea>
               </InputGroup>
 
               <InputGroup>
                 <label htmlFor="product_image">Imagen(es) del producto: </label>
-                <ImagePreview imageName={imageName} setImageName={setImageName} imageList={imageList} setImageList={setImageList} name='product_image' />
+                <ImagePreview imageName={imageName} setImageName={setImageName} imageList={imageList} setImageList={setImageList} name='product_image' required={true} />
               </InputGroup>
 
               <div className={style.price_container}>
 
                 <InputGroup>
                   <label htmlFor="product_cost">Precio sin IVA:</label>
-                  <input type="number" name="product_cost" id="product_cost" value={price} min='0' step='10' onChange={(e) => handleOnChange(e, data, setData)} />
+                  <input type="number" name="product_cost" id="product_cost" value={price} min='0' step='10' onChange={(e) => handleOnChange(e, data, setData)} required />
                 </InputGroup>
 
                 <InputGroup>
@@ -121,14 +131,14 @@ export const AddProducts = () => {
 
                 <InputGroup name='product_price' text='Precio de venta (IVA inc.):' type='number' placeholder='0' disabled={true} value={total} >
                   <label htmlFor="product_price">Precio total (IVA inc.):</label>
-                  <input type="number" name="product_price" id="product_price" value={total} onChange={(e) => onDataChange(e, data, setData)} disabled />
+                  <input type="number" name="product_price" id="product_price" value={total} onChange={(e) => onDataChange(e, data, setData)} disabled required />
                 </InputGroup>
 
               </div>
 
               <div className={style.buttons_container}>
 
-                <Button variant='save-btn' func={() => newProduct(data)} show={true}><p>Guardar</p></Button>
+                <input type="submit" value="Guardar" />
                 <Button variant='reset-btn' show={true}><p>Borrar</p></Button>
                 <Button variant='cancel-btn' show={true}><p>Cancelar</p></Button>
 

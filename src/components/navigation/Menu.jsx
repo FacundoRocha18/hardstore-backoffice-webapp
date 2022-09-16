@@ -19,24 +19,24 @@ export const Menu = ({ }) => {
               </span>
               <Link to={'/'}>Inicio</Link>
             </li>
-            <li>
+            {/* <li>
               <span className="material-icons-round">
                 people_alt
               </span>
               <Link to={'/'}>Empleados</Link>
-            </li>
+            </li> */}
             <li>
               <span className="material-icons-round">
                 inventory
               </span>
               <Link to={'/'}>Inventario</Link>
             </li>
-            <li>
+            {/* <li>
               <span className="material-icons-round">
                 sell
               </span>
               <Link to={'/'}>Ventas</Link>
-            </li>
+            </li> */}
 
           </ul>
         </nav>
