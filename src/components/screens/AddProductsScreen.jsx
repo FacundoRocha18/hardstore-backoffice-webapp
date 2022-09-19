@@ -17,7 +17,10 @@ export const AddProducts = () => {
 
   const { cats } = useCategories();
 
-  const [selectedCat, setSelectedCat] = useState();
+  const [selectedCat, setSelectedCat] = useState({
+    cat_id: 0,
+    cat_name: ''
+  });
 
   const [price, setPrice] = useState(0);
 
@@ -34,6 +37,7 @@ export const AddProducts = () => {
     desc: null,
     img: [],
     price: 0,
+    cat_id: 0,
     cat: null
   });
 
@@ -64,7 +68,8 @@ export const AddProducts = () => {
   useEffect(() => {
     setData({
       ...data,
-      cat: selectedCat
+      cat_id: selectedCat.cat_id,
+      cat: selectedCat.cat_name
     })
   }, [selectedCat])
 

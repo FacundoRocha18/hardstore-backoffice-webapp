@@ -15,10 +15,16 @@ export const SelectBox = ({ cats, selectedCat, setSelectedCat, required }) => {
 
     const [highlight, setHighlight] = useState(false);
 
-    const handleSelect = (e) => {
+    const handleSelect = (e, cat_id, cat_name) => {
         e.preventDefault();
-        setSelectedCat(e.target.name)
+
+        console.log(cat_id, cat_name)
+        setSelectedCat({
+            cat_id: parseInt(cat_id),
+            cat_name: cat_name.trim()
+        })
         setHighlight(e.target.name)
+        setDeployCats(false);
     }
 
     const handleClick = (e) => {
@@ -29,14 +35,14 @@ export const SelectBox = ({ cats, selectedCat, setSelectedCat, required }) => {
     return (
         <>
             <div className={style.container}>
-                <div className={style.column}>
-                    <input className={css(style.selected_cat, deployCats && style.deploy_cats)} type="text" name="selected_cat" id="selected_cat" placeholder='Seleccione una categoría' defaultValue={selectedCat} required={required} />
+                <div className={css(style.column, deployCats && style.grow)}>
+                    <input className={css(style.selected_cat, deployCats && style.deploy_cats)} type="text" name="selected_cat" id="selected_cat" placeholder='Seleccione una categoría' defaultValue={selectedCat.cat_name} required={required} />
                     <div className={css(style.cats_container, !deployCats && style.hidden)}>
                         <ul>
                             {
                                 cats.map(({ cat_id, cat_name }, index) => (
                                     <li key={index}>
-                                        <button name={cat_name} className={css(style.cat_btn, highlight === cat_name && style.highlight)} onClick={(e) => handleSelect(e)} >
+                                        <button name={cat_name} className={css(style.cat_btn, highlight === cat_name && style.highlight)} onClick={(e) => handleSelect(e, cat_id, cat_name)} >
                                         {cat_id} - {cat_name}
                                         </button>
                                     </li>
@@ -66,6 +72,6 @@ SelectBox.defaultProps = {
 
 SelectBox.propTypes = {
     cats: PropTypes.array.isRequired,
-    selectedCat: PropTypes.string,
+    selectedCat: PropTypes.object,
     setSelectedCat: PropTypes.func.isRequired,
 }

@@ -6,12 +6,28 @@
     z-index: 100;
 }
 
+.column {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 175px;
+    -webkit-transition: width .3s ease-in-out;
+    -moz-transition: width .3s ease-in-out;
+    -o-transition: width .3s ease-in-out;
+    transition: width .3s ease-in-out;
+}
+
+.column.grow {
+    width: 300px;
+}
+
 .container .selected_cat {
     border-right: none;
     border: none;
     border-radius: 5px 0px 0px 5px;
     height: 35px;
     width: 100%;
+    transition: all .3s ease-in-out;
 }
 
 .container .selected_cat.deploy_cats {
@@ -21,29 +37,32 @@
 .cats_container {
     background-color: #fff;
     border-radius: 0px 0px 5px 5px;
-    max-height: fit-content;
-    width: 280px;
+    width: 300px;
     overflow: hidden;
-    position: relative;
-    left: 0px;
-    transition: all .3s ease-in-out;
+    top: 35px;
+    position: absolute;
+    height: 300px;
+    max-height: 500px;
+    z-index: 100;
+    -webkit-transition: height .5s ease-in-out;
+    -moz-transition: height .5s ease-in-out;
+    -o-transition: height .5s ease-in-out;
+    transition: height .5s ease-in-out;
 }
 
-
-.column {
-    display: flex;
-    flex-direction: column;
+.cats_container.hidden {
+    height: 0px;
+    width: 0px;
 }
 
 .cats_container ul {
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     justify-content: flex-start;
-    min-height: 35px;
-    max-height: 100%;
-    z-index: 100;
+    overflow-y: scroll;
 }
+
 
 .cats_container ul li {
     border-bottom: solid 1px var(--black-hover);
@@ -60,14 +79,8 @@
 
 }
 
-.cats_container.hidden {
-    height: 0px;
-}
 
-.cats_container ul {
-    max-height: 400px;
-    overflow-y: scroll;
-}
+
 
 .cat_btn {
     background-color: transparent;
