@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
 /* Custom hooks --------------------- */
-import { useToken } from '../hooks/useToken';
+import { useToken } from './useToken';
 
-/* API callers --------------------- */
-import { getAuth } from '../API';
+/* API Services --------------------- */
+import { LoginService } from '../../Services';
 
 export const useAuth = () => {
 
@@ -19,7 +19,7 @@ export const useAuth = () => {
         status,
         message,
         token
-      } = await getAuth(id, pin);
+      } = await LoginService(id, pin);
 
       if (status === false) {
         return console.log(message)

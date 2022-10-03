@@ -1,0 +1,28 @@
+.container {
+	align-items: center;
+	background-color: rgb(231, 229, 229);
+	border-radius: 10px;
+	color: var(--text-dark);
+	display: flex;
+	justify-content: space-between;
+	width: 250px;
+	height: 75px;
+	position: fixed;
+	padding: 20px;
+	top: 25px;
+	right: 25px;
+}
+
+.icon {
+	align-items: center;
+	display: flex;
+	height: 75px;
+	justify-content: center;
+	width: 50px;
+
+}
+
+.icon.error {
+	background: var(--critical-btn-gradient);
+}
+

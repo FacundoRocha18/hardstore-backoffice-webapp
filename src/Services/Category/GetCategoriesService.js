@@ -1,4 +1,4 @@
-export const getCategories = async () => {
+export const GetCategoriesService = async () => {
 
     const url = `https://api.hardstore.store/`;
 

@@ -1,5 +1,5 @@
 
-export const getAuth = async (id, password) => {
+export const LoginService = async (id, password) => {
 
     const user = {
         id: id,
@@ -18,7 +18,7 @@ export const getAuth = async (id, password) => {
         body: JSON.stringify(user)
     };
 
-    const response = await fetch(devURL, params)
+    const response = await fetch(url, params)
     
     const { ok, message, data } = await response.json()
     

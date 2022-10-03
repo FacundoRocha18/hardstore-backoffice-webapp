@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import style from './Login.module.css'
 import css from 'classnames'
 
-import { Loading } from '../../components'
+import { Loading } from '../../Components'
 
 export const Login = ({ onLogin }) => {
 

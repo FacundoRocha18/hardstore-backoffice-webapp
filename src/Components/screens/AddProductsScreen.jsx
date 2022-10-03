@@ -5,13 +5,13 @@ import style from './AddProducts.module.css'
 import css from 'classnames'
 
 /* Components --------------------- */
-import { Button, ImagePreview, FormGroup as InputGroup, SelectBox } from '../'
+import { Button, ImagePreview, FormGroup as InputGroup, SelectBox, Alert } from '../'
 
 /* API --------------------- */
-import { newProduct } from '../../API'
+import { CreateProductService } from '../../Services'
 
 /* Custom Hooks --------------------- */
-import { useCategories } from '../../hooks'
+import { useCategories } from '../../Hooks'
 
 export const AddProducts = () => {
 
@@ -79,13 +79,15 @@ export const AddProducts = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    return newProduct(data);
+    return CreateProductService(data);
   }
 
   return (
     <>
       {
         <div className={style.container}>
+  				<Alert type='error' message='Esta es una alerta' isActive={true} />
+
           <div className={style.title}>
             <h2>Subir nuevo producto</h2>
           </div>
@@ -144,7 +146,7 @@ export const AddProducts = () => {
               <div className={style.buttons_container}>
 
                 <input type="submit" value="Guardar" />
-                <Button variant='reset-btn' show={true}><p>Borrar</p></Button>
+                <Button variant='reset-btn' show={true} ><p>Borrar</p></Button>
                 <Button variant='cancel-btn' show={true}><p>Cancelar</p></Button>
 
               </div>

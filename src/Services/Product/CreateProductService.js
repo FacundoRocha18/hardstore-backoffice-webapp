@@ -1,5 +1,5 @@
 
-export const newProduct = (data) => {
+export const CreateProductService = (data) => {
 
     const url = `https://api.hardstore.store/api/auth/employees/login`
 

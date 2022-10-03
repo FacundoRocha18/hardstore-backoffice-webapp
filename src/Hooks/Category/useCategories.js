@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
-import { getCategories } from '../API'
+/* API Services --------------------- */
+import { GetCategoriesService } from '../../Services'
 
 
 export const useCategories = () => {
@@ -15,7 +16,7 @@ export const useCategories = () => {
 
     const getCats = async () => {
 
-        const request = await getCategories();
+        const request = await GetCategoriesService();
 
         setCats(request);
     }

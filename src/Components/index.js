@@ -1,4 +1,5 @@
 export * from './App'
+export * from './alerts/Alert'
 export * from './home/Home'
 export * from './home/HomeCard'
 export * from './home/HomeMenu'
