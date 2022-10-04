@@ -100,7 +100,7 @@ export const AddProducts = () => {
     <>
       {
         <div className={style.container}>
-  				<Alert type='error' title={'Inicio de sesión exitoso'} message='Bienvenido, Facundo Rocha.' isActive={isActive} />
+  				<Alert type='success' title={'Inicio de sesión exitoso'} message='Bienvenido, Facundo Rocha.' isActive={isActive} />
 
           <div className={style.title}>
             <h2>Subir nuevo producto</h2>

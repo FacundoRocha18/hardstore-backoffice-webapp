@@ -29,7 +29,7 @@ export const Alert = ({ type, title, message, isActive }) => {
 	)
 }
 
-const selectIcon = (type) => {
+const selectIcon = (alertType) => {
 
 	const icons = [
 		{
@@ -47,18 +47,19 @@ const selectIcon = (type) => {
 		{
 			type: 'success',
 			icon: 'check_circle_outline'
-		},
+		}
 	]
 
-	const selectedIcon = (type) => {
+	let alertIcon;
 
-		
+	for (let i = 0; i < icons.length; i++) {
 
-		const searchIcon = (index, icons) => {
-			return type === icons[index];
+		const { type, icon } = icons[i]
+
+		if (type === alertType) {
+			alertIcon = icon
 		}
-
 	}
 
-	return selectedIcon(type);
+	return alertIcon;
 }
