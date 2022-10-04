@@ -5,7 +5,7 @@ import style from './Header.module.css'
 import css from 'classnames'
 
 /* Components ----------------------- */
-import { Menu } from '../../Components'
+import { Menu } from '..'
 
 
 export const Header = ({ showMenu, setShowMenu, onLogOut }) => {

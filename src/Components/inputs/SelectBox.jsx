@@ -7,7 +7,7 @@ import style from './SelectBox.module.css'
 import css from 'classnames'
 
 /* Components --------------------- */
-import { Button } from '../'
+import { Button } from '..'
 
 export const SelectBox = ({ cats, selectedCat, setSelectedCat, required }) => {
 

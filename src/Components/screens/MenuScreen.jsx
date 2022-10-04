@@ -5,7 +5,7 @@ import style from './MenuScreen.module.css'
 import css from 'classnames'
 
 /* Components ----------------------- */
-import { Loading, HomeCard, HomeMenu } from '../'
+import { Loading, HomeCard, HomeMenu } from '..'
 
 export const MenuScreen = () => {
 

@@ -6,7 +6,7 @@ import style from './ImagePreview.module.css'
 import css from 'classnames'
 
 /* Components --------------------- */
-import { Button } from '../'
+import { Button } from '..'
 
 export const ImagePreview = ({ setImageName, imageList, setImageList, name, required }) => {
 

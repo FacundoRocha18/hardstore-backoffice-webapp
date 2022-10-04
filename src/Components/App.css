@@ -89,6 +89,9 @@ ul, ol, li {
   /* Colors */
   --blue: #039BE5;
   --blue-hover: #0277BD;
+	--yellow: #FFC107;
+	--green: #66BB6A;
+	--red: #ec4644;
   --orange: #ff6f00dc;
   --orange-hover: #c25705;
   --black: #0d0d0d;

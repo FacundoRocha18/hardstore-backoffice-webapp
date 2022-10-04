@@ -1,28 +1,86 @@
 .container {
 	align-items: center;
 	background-color: rgb(231, 229, 229);
-	border-radius: 10px;
-	color: var(--text-dark);
+	border-radius: 5px;
+	bottom: 30px;
 	display: flex;
-	justify-content: space-between;
-	width: 250px;
-	height: 75px;
 	position: fixed;
-	padding: 20px;
-	top: 25px;
-	right: 25px;
+	right: 30px;
+	overflow: hidden;
+	z-index: 1000;
+}
+
+.container.active {
+	overflow: hidden;
+	width: 400px;
+	height: 100px;
+	transition: all .5s ease-in-out ;
+}
+
+.container.inactive {
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+	transition: all .5s ease-in-out ;
 }
 
 .icon {
 	align-items: center;
 	display: flex;
-	height: 75px;
+	height: 100%;
 	justify-content: center;
-	width: 50px;
+	min-width: 75px;
+}
 
+.icon span {
+	color: var(--text-main-color);
+	font-size: 35px;
+}
+
+.container.inactive .icon span {
+	font-size: 0px;
+	transition: all .5s ease-in-out ;
+}
+
+.icon.info {
+	background-color: var(--blue);
+}
+
+.icon.success {
+	background-color: var(--green);
+}
+
+.icon.success span {
+	color: var(--text-dark);
+}
+
+.icon.warning {
+	background-color: var(--yellow);
+}
+
+.icon.warning span {
+	color: var(--text-dark);
 }
 
 .icon.error {
-	background: var(--critical-btn-gradient);
+	background-color: var(--red);
 }
 
+.message,
+.message h3 {
+	color: var(--text-dark);
+	text-align: left;
+	white-space: nowrap;
+}
+
+.message.inactive {
+	width: 0px;
+	overflow: hidden;
+	padding: 0px;
+}
+
+.message.active {
+	width: 100%;
+	overflow: hidden;
+	padding: 20px;
+}

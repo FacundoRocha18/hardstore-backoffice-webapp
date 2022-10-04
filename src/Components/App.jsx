@@ -13,7 +13,7 @@ import {
 } from 'react-router-dom'
 
 /* Components ----------------------- */
-import { Home, Header, Login, AddProducts, NoMatch } from '../Components'
+import { Home, Header, Login, AddProducts, NoMatch } from '.'
 
 /* Custom hooks --------------------- */
 import { useAuth } from '../Hooks'

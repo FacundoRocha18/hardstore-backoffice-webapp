@@ -5,7 +5,7 @@ import style from './AddProducts.module.css'
 import css from 'classnames'
 
 /* Components --------------------- */
-import { Button, ImagePreview, FormGroup as InputGroup, SelectBox, Alert } from '../'
+import { Button, ImagePreview, FormGroup as InputGroup, SelectBox, Alert } from '..'
 
 /* API --------------------- */
 import { CreateProductService } from '../../Services'
@@ -30,6 +30,8 @@ export const AddProducts = () => {
 
   const [imageName, setImageName] = useState(null)
 
+	const [ isActive, setIsActive ] = useState(false);
+
   const [data, setData] = useState({
     name: null,
     sku: null,
@@ -44,6 +46,16 @@ export const AddProducts = () => {
   const iva = 0.25;
 
   const ivaCalc = price * iva;
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+		setIsActive(true)
+		}, 500)
+		
+		return () => {
+			clearTimeout(timer);
+		}
+	}, [])
 
   useEffect(() => {
     if (price < 1) setPrice(0);
@@ -82,11 +94,13 @@ export const AddProducts = () => {
     return CreateProductService(data);
   }
 
+	const toggleAlert = () => setIsActive(!isActive)
+
   return (
     <>
       {
         <div className={style.container}>
-  				<Alert type='error' message='Esta es una alerta' isActive={true} />
+  				<Alert type='info' title={'Inicio de sesión exitoso'} message='Bienvenido, Facundo Rocha.' isActive={isActive} />
 
           <div className={style.title}>
             <h2>Subir nuevo producto</h2>
@@ -146,7 +160,7 @@ export const AddProducts = () => {
               <div className={style.buttons_container}>
 
                 <input type="submit" value="Guardar" />
-                <Button variant='reset-btn' show={true} ><p>Borrar</p></Button>
+                <Button variant='reset-btn' show={true} func={toggleAlert} ><p>Borrar</p></Button>
                 <Button variant='cancel-btn' show={true}><p>Cancelar</p></Button>
 
               </div>

@@ -8,7 +8,7 @@ import style from './HomeMenu.module.css'
 import css from 'classnames'
 
 /* Components --------------------- */
-import { Button } from '../'
+import { Button } from '..'
 
 export const HomeMenu = () => {
 
