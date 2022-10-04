@@ -4,6 +4,9 @@ import React from 'react'
 import style from './alert.module.css'
 import css from 'classnames'
 
+/* Components --------------------- */
+import { Button } from '../inputs/Button'
+
 export const Alert = ({ type, title, message, isActive }) => {
 
 	const icon = selectIcon(type);
@@ -19,10 +22,13 @@ export const Alert = ({ type, title, message, isActive }) => {
 					</span>
 				</div>
 				<div className={css(style.message, isActive ? style.active : style.inactive)}>
-					<h3>
+					<h4>
 						{title}
-					</h3>
+					</h4>
 					<p>{message}</p>
+				</div>
+				<div>
+					<Button variant={'delete-btn'} ></Button>
 				</div>
 			</section>
 		</>

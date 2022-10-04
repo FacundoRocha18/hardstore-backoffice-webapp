@@ -68,7 +68,8 @@
 }
 
 .message,
-.message h3 {
+.message h4 {
+	
 	color: var(--text-dark);
 	text-align: left;
 	white-space: nowrap;
