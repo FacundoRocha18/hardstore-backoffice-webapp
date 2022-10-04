@@ -1,6 +1,6 @@
-import { Header } from '../../components';
+import { Header } from '../../Components';
 import { render, screen } from '@testing-library/react';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../Hooks/Auth/useAuth';
 
 describe('Tests on <Header /> component', () => {
 

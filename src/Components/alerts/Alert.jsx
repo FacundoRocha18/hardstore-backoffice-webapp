@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 /* CSS Styles --------------------- */
 import style from './alert.module.css'
@@ -30,24 +30,35 @@ export const Alert = ({ type, title, message, isActive }) => {
 }
 
 const selectIcon = (type) => {
-	let icon = 'info'
-	switch (type) {
-		case 'error':
-			icon = 'error_outline'
-			break;
-		case 'info':
-			icon = 'info'
-			break;
-		case 'success':
-			icon = 'check_circle_outline'
-			break;
-		case 'warning':
-			icon = 'warning_amber'
-			break;
 
-		default:
-			icon = 'info'
-			break;
+	const icons = [
+		{
+			type: 'info',
+			icon: 'info'
+		},
+		{
+			type: 'error',
+			icon: 'error_outline'
+		},
+		{
+			type: 'warning',
+			icon: 'warning_amber'
+		},
+		{
+			type: 'success',
+			icon: 'check_circle_outline'
+		},
+	]
+
+	const selectedIcon = (type) => {
+
+		
+
+		const searchIcon = (index, icons) => {
+			return type === icons[index];
+		}
+
 	}
-	return icon;
+
+	return selectedIcon(type);
 }

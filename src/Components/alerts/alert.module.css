@@ -34,6 +34,7 @@
 
 .icon span {
 	color: var(--text-main-color);
+	color: var(--text-dark);
 	font-size: 35px;
 }
 

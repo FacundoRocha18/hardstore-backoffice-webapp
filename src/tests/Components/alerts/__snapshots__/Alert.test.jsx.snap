@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests on <Alert /> component should match the snapshot 1`] = `
+<div>
+  <section
+    class="container active"
+  >
+    <div
+      class="icon info"
+    >
+      <span
+        class="material-icons-outlined"
+      >
+        info
+      </span>
+    </div>
+    <div
+      class="message active"
+    >
+      <h3>
+        Inicio de sesion exitoso
+      </h3>
+      <p>
+        Bienvenido Facundo.
+      </p>
+    </div>
+  </section>
+</div>
+`;
