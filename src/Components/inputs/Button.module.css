@@ -54,7 +54,8 @@
     background: var(--critical-btn-gradient-hover);
 }
 
-.button.delete-btn {
+.button.delete-btn,
+.button.close-btn {
     border-radius: 50px;
     float: right;
     height: 25px;
@@ -63,9 +64,14 @@
     min-width: 0;
 }
 
-.button.delete-btn span {
+.button.delete-btn span,
+.button.close-btn span {
     font-size: 20px;
     color: var(--text-dark);
+}
+
+.button.close-btn span {
+	font-size: 25px;
 }
 
 .button.delete-btn:hover {

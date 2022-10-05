@@ -7,7 +7,7 @@ import css from 'classnames'
 /* Components --------------------- */
 import { Button } from '../inputs/Button'
 
-export const Alert = ({ type, title, message, isActive }) => {
+export const Alert = ({ type, title, message, isActive, close }) => {
 
 	const icon = selectIcon(type);
 
@@ -21,14 +21,20 @@ export const Alert = ({ type, title, message, isActive }) => {
 						}
 					</span>
 				</div>
-				<div className={css(style.message, isActive ? style.active : style.inactive)}>
-					<h4>
-						{title}
-					</h4>
-					<p>{message}</p>
-				</div>
-				<div>
-					<Button variant={'delete-btn'} ></Button>
+				<div className={css(style.body, isActive ? style.active : style.inactive)}>
+					<div className={css(style.message)}>
+						<h4>
+							{title}
+						</h4>
+						<p>{message}</p>
+					</div>
+					<div className={css(style.btn_container)}>
+						<Button variant={'close-btn'} func={close} >
+							<span className="material-icons-outlined">
+								close
+							</span>
+						</Button>
+					</div>
 				</div>
 			</section>
 		</>

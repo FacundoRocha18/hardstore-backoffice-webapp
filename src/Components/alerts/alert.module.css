@@ -1,6 +1,6 @@
 .container {
 	align-items: center;
-	background-color: rgb(231, 229, 229);
+	background-color: rgb(245, 245, 245);
 	border-radius: 5px;
 	bottom: 30px;
 	display: flex;
@@ -12,7 +12,7 @@
 
 .container.active {
 	overflow: hidden;
-	width: 400px;
+	width: 500px;
 	height: 100px;
 	transition: all .5s ease-in-out ;
 }
@@ -67,12 +67,37 @@
 	background-color: var(--red);
 }
 
+.body {
+	align-items: center;
+	display: flex;
+	gap: 20px;
+	justify-content: space-between;
+}
+
+.body.inactive {
+	width: 0px;
+	overflow: hidden;
+	padding: 0px;
+}
+
+.body.active {
+	overflow: hidden;
+	width: 100%;
+	padding: 20px;
+}
+
+.message {
+	width: 100%;
+}
+
 .message,
-.message h4 {
-	
+.message h4,
+.message p {
 	color: var(--text-dark);
 	text-align: left;
 	white-space: nowrap;
+	width: fit-content;
+	padding: 0;
 }
 
 .message.inactive {
@@ -82,7 +107,14 @@
 }
 
 .message.active {
-	width: 100%;
+	width: fit-content;
 	overflow: hidden;
-	padding: 20px;
+}
+
+.btn_container {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	min-width: 50px;
+	min-height: 50px;
 }
