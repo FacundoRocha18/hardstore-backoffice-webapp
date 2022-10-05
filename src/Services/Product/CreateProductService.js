@@ -1,7 +1,7 @@
 
 export const CreateProductService = (data) => {
 
-    const url = `https://api.hardstore.store/api/auth/employees/login`
+    const url = `https://api.hardstore.store/api/products/new`
 
     const requestHeaders = new Headers();
     requestHeaders.append("Content-Type", "application/json;charset=utf-8");

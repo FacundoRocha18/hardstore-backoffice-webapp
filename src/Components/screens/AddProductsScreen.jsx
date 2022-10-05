@@ -159,7 +159,13 @@ export const AddProducts = () => {
 
               <div className={style.buttons_container}>
 
-                <input type="submit" value="Guardar" />
+								<input type="submit" value="Guardar" />
+
+								<Button variant='save-btn' show={true} func={CreateProductService(data)} >
+									<p>
+										Guardar
+									</p>
+								</Button>
                 <Button variant='reset-btn' show={true} func={toggleAlert} ><p>Borrar</p></Button>
                 <Button variant='cancel-btn' show={true}><p>Cancelar</p></Button>
 

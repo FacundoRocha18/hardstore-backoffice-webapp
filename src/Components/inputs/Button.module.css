@@ -46,12 +46,12 @@
 }
 
 .button.cancel-btn {
-    background: var(--critical-btn-gradient);
+    background-color: var(--red);
 
 }
 
 .button.cancel-btn:hover {
-    background: var(--critical-btn-gradient-hover);
+	background-color: var(--critical-btn-hover-bg-color);
 }
 
 .button.delete-btn,
