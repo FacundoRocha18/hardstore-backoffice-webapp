@@ -82,11 +82,15 @@ export const CreateNewProduct = ({ newAlert }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const { ok, title, message } = await CreateProductService(data);
+		try {
+			const { ok, title, message } = await CreateProductService(data);
 
-		if (!ok) return newAlert(title, message, 'error')
+			if (!ok) return newAlert(title, message, 'error')
 
-		return newAlert(title, message, 'success')
+			return newAlert(title, message, 'success')
+		} catch (e) {
+			return newAlert(e, e.message, 'success')
+		}
 	}
 
 	const showAlert = () => {
