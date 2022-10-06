@@ -18,7 +18,6 @@ export const SelectBox = ({ cats, selectedCat, setSelectedCat, required }) => {
     const handleSelect = (e, cat_id, cat_name) => {
         e.preventDefault();
 
-        console.log(cat_id, cat_name)
         setSelectedCat({
             cat_id: parseInt(cat_id),
             cat_name: cat_name.trim()

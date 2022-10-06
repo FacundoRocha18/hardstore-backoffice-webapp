@@ -25,7 +25,6 @@ export const useAlert = () => {
     setMessage(message);
     setType(type);
     setIsActive(true);
-		console.log(isActive)	
   };
 
   const close = () => setIsActive(false);

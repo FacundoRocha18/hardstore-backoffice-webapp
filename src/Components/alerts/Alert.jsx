@@ -14,7 +14,7 @@ export const Alert = ({ type, title, message, isActive, close }) => {
 	return (
 		<>
 			<section className={css(style.container, isActive ? style.active : style.inactive)}>
-				<div className={css(style.icon, style[type])}>
+				<div className={css(style.head, style[type])}>
 					<span className="material-icons-outlined">
 						{
 							icon

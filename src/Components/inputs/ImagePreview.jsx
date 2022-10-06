@@ -8,7 +8,7 @@ import css from 'classnames'
 /* Components --------------------- */
 import { Button } from '..'
 
-export const ImagePreview = ({ setImageName, imageList, setImageList, name, required }) => {
+export const ImagePreview = ({ setImageName, imageList, setImageList, name, required, newAlert }) => {
 
     const [show, setShow] = useState(false)
 
@@ -33,8 +33,6 @@ export const ImagePreview = ({ setImageName, imageList, setImageList, name, requ
             setImageName(file.name);
         }
 
-        console.log(file)
-
         reader.onload = ({ target }) => {
             const exists = imageList.find((x) => x === target.result)
 
@@ -46,7 +44,9 @@ export const ImagePreview = ({ setImageName, imageList, setImageList, name, requ
                 return setIsImageLoaded(true);
             }
 
-            setShow(true)
+                        
+            newAlert('No se pueden subir imagenes repetidas', 'No se pueden subir imagenes repetidas', 'error')
+
             setTimeout(() => {
                 setShow(false)
             }, 3000);
@@ -61,6 +61,8 @@ export const ImagePreview = ({ setImageName, imageList, setImageList, name, requ
 
         if (exists) setImageList(imageList.filter((x) => x !== item))
         if (imageList.length <= 1) setIsImageLoaded(false);
+				newAlert('Se borró correctamente la imágen', 'Se borró correctamente la imágen', 'success')
+
     }
 
     return (
@@ -95,9 +97,6 @@ export const ImagePreview = ({ setImageName, imageList, setImageList, name, requ
                     </div>
 
                     <input type={'file'} accept={'image/*'} name={name} id={name} className={style.hidden} onChange={(e) => handleLoad(e)} required={required} />
-                    <label className={css(style.alert_label, style['warning'], !show && style.hidden)}>
-                        No se pueden subir imagenes repetidas
-                    </label>
                 </div>
             }
         </>

@@ -6,25 +6,10 @@
 	display: flex;
 	position: fixed;
 	right: 30px;
-	overflow: hidden;
 	z-index: 1000;
 }
 
-.container.active {
-	overflow: hidden;
-	width: 500px;
-	height: 100px;
-	transition: all .5s ease-in-out ;
-}
-
-.container.inactive {
-	width: 0px;
-	height: 0px;
-	overflow: hidden;
-	transition: all .5s ease-in-out ;
-}
-
-.icon {
+.head {
 	align-items: center;
 	display: flex;
 	height: 100%;
@@ -32,58 +17,45 @@
 	min-width: 75px;
 }
 
-.icon span {
+.head span {
 	color: var(--text-main-color);
 	color: var(--text-dark);
 	font-size: 35px;
 }
 
-.container.inactive .icon span {
-	font-size: 0px;
-	transition: all .5s ease-in-out ;
-}
+/* Start: Alert head background color (variable) */
 
-.icon.info {
+.head.info {
 	background-color: var(--blue);
 }
 
-.icon.success {
+.head.success {
 	background-color: var(--green);
 }
 
-.icon.success span {
+.head.success span {
 	color: var(--text-dark);
 }
 
-.icon.warning {
+.head.warning {
 	background-color: var(--yellow);
 }
 
-.icon.warning span {
+.head.warning span {
 	color: var(--text-dark);
 }
 
-.icon.error {
+.head.error {
 	background-color: var(--red);
 }
+
+/* End: Alert head background color (variable) */
 
 .body {
 	align-items: center;
 	display: flex;
 	gap: 20px;
 	justify-content: space-between;
-}
-
-.body.inactive {
-	width: 0px;
-	overflow: hidden;
-	padding: 0px;
-}
-
-.body.active {
-	overflow: hidden;
-	width: 100%;
-	padding: 20px;
 }
 
 .message {
@@ -100,21 +72,63 @@
 	padding: 0;
 }
 
-.message.inactive {
-	width: 0px;
-	overflow: hidden;
-	padding: 0px;
-}
-
-.message.active {
-	width: fit-content;
-	overflow: hidden;
-}
-
 .btn_container {
 	align-items: center;
 	display: flex;
 	justify-content: center;
 	min-width: 50px;
 	min-height: 50px;
+}
+
+/* Start: Alert state (variable) */
+
+.container.active {
+	overflow: hidden;
+	min-width: 500px;
+	max-width: fit-content;
+	height: 100px;
+	transition: all .3s ease;
+}
+
+.container.inactive {
+	min-width: 0px;
+	max-width: 0px;
+	height: 0px;
+	overflow: hidden;
+	transition: all .5s ease;
+}
+
+.container.inactive .head span {
+	font-size: 0px;
+	transition: all .5s ease;
+}
+
+.body.inactive {
+	width: 0px;
+	overflow: hidden;
+	padding: 0px;
+	transition: all .5s ease;
+
+}
+
+.body.active {
+	overflow: hidden;
+	width: 100%;
+	padding: 20px;
+	transition: all .3s ease;
+}
+
+.message.inactive {
+	width: 0px;
+	overflow: hidden;
+	padding: 0px;
+	transition: all .5s ease;
+
+}
+
+.message.active {
+	width: fit-content;
+	overflow: hidden;
+	transition: all .3s ease;
+
 }
