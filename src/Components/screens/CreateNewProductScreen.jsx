@@ -94,6 +94,7 @@ export const CreateNewProduct = ({ newAlert }) => {
 	}
 
 	const showAlert = () => {
+		window.location.reload()
 		newAlert('Borrado exitoso', 'Se ha borrado el contenido de la pantalla', 'success')
 	}
 
@@ -167,14 +168,12 @@ export const CreateNewProduct = ({ newAlert }) => {
 
 							<div className={style.buttons_container}>
 
-								<input type="submit" value="Guardar" />
-
-								{/* <Button variant='save-btn' show={true} func={CreateProductService(data)} >
+								<Button variant='save-btn' show={true} >
 									<p>
 										Guardar
 									</p>
-								</Button> */}
-								<Button variant='reset-btn' show={true} func={showAlert} ><p>Borrar</p></Button>
+								</Button>
+								<Button variant='reset-btn' show={true} func={showAlert} ><p>Limpiar</p></Button>
 								<Button variant='cancel-btn' show={true}><p>Cancelar</p></Button>
 
 							</div>
