@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 
 /* CSS Styles --------------------- */
-import style from './AddProducts.module.css'
+import style from './CreateNewProductScreen.module.css'
 import css from 'classnames'
 
 /* Components --------------------- */
-import { Button, ImagePreview, FormGroup as InputGroup, SelectBox, Alert } from '..'
+import { Button, ImagePreview, FormGroup as InputGroup, SelectBox } from '..'
 
 /* API --------------------- */
 import { CreateProductService } from '../../Services'
@@ -13,7 +13,7 @@ import { CreateProductService } from '../../Services'
 /* Custom Hooks --------------------- */
 import { useCategories } from '../../Hooks'
 
-export const AddProducts = () => {
+export const CreateNewProduct = ({ newAlert }) => {
 
   const { cats } = useCategories();
 
@@ -30,8 +30,6 @@ export const AddProducts = () => {
 
   const [imageName, setImageName] = useState(null)
 
-	const [ isActive, setIsActive ] = useState(false);
-
   const [data, setData] = useState({
     name: null,
     sku: null,
@@ -47,18 +45,8 @@ export const AddProducts = () => {
 
   const ivaCalc = price * iva;
 
-	useEffect(() => {
-		const timer = setTimeout(() => {
-		setIsActive(true)
-		}, 500)
-		
-		return () => {
-			clearTimeout(timer);
-		}
-	}, [])
-
   useEffect(() => {
-    if (price < 1) setPrice(0);
+    if (price < 0) setPrice(0);
     setTotal(parseInt(price) + parseInt(ivaCalc))
   }, [price])
 
@@ -94,14 +82,15 @@ export const AddProducts = () => {
     return CreateProductService(data);
   }
 
-	const toggleAlert = () => setIsActive(!isActive)
+	const showAlert = () => {
+		newAlert('Borrado exitoso', 'Se ha borrado el contenido de la pantalla', 'success')
+	}
 
   return (
     <>
       {
         <div className={style.container}>
-  				<Alert type='success' title={'Inicio de sesión exitoso'} message='Bienvenido, Facundo Rocha.' isActive={isActive} close={setIsActive} />
-
+  				
           <div className={style.title}>
             <h2>Subir nuevo producto</h2>
           </div>
@@ -161,12 +150,12 @@ export const AddProducts = () => {
 
 								<input type="submit" value="Guardar" />
 
-								<Button variant='save-btn' show={true} func={CreateProductService(data)} >
+								{/* <Button variant='save-btn' show={true} func={CreateProductService(data)} >
 									<p>
 										Guardar
 									</p>
-								</Button>
-                <Button variant='reset-btn' show={true} func={toggleAlert} ><p>Borrar</p></Button>
+								</Button> */}
+                <Button variant='reset-btn' show={true} func={showAlert} ><p>Borrar</p></Button>
                 <Button variant='cancel-btn' show={true}><p>Cancelar</p></Button>
 
               </div>

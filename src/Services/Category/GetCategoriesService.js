@@ -2,7 +2,7 @@ export const GetCategoriesService = async () => {
 
     const url = `https://api.hardstore.store/api/categories/`;
 
-    const devUrl = `http://localhost:8000/api/categories/`;
+    const devUrl = `http://127.0.0.1:8000/api/categories/`;
 
     const response = await fetch(url);
     const { data } = await response.json();

@@ -2,55 +2,63 @@
 import { useState } from 'react';
 
 /* Custom hooks --------------------- */
-import { useToken } from './useToken';
+import { useToken } from '../../Hooks';
 
 /* API Services --------------------- */
 import { LoginService } from '../../Services';
 
 export const useAuth = () => {
 
-  const [loading, setIsLoading] = useState(true)
+	const [loading, setIsLoading] = useState(true)
 
-  const { token, setToken } = useToken()
+	const { token, setToken } = useToken()
 
-  const handleLogin = async ({ id, pin }) => {
+	const handleLogin = async (id, pin) => {
 
-    try {
-      const {
-        status,
-        message,
-        token
-      } = await LoginService(id, pin);
+		try {
+			const {
+				status,
+				message,
+				token
+			} = await LoginService(id, pin);
 
-      if (status === false) {
-        return console.log(message)
-      }
+			if (!status) {
+				return {
+					loading,
+					status,
+					message
+				}
+			}
 
-      setTimeout(() => {
-        return {
-          token: setToken(token),
-        };
-      }, 2000);
+			setTimeout(() => {
+				return {
+					token: setToken(token),
+				};
+			}, 2000);
 
-      return loading;
-     
-    } catch (error) {
-      console.log(error)
-    }
-  }
+			return {
+				loading,
+				status,
+				message
+			};
 
-  const handleLogout = () => {
-    sessionStorage.clear();
-    window.location.reload(false);
-  };
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
-  return {
-    token,
-    loading,
-    setIsLoading,
-    onLogin: handleLogin,
-    onLogOut: handleLogout
-  }
+	const handleLogout = () => {
+		sessionStorage.clear();
+		window.location.reload(false);
+	};
+
+	return {
+		token,
+		loading,
+		setIsLoading,
+		onLogin: handleLogin,
+		onLogOut: handleLogout
+	}
 }
 
 

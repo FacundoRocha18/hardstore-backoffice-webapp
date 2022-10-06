@@ -1,71 +1,80 @@
 import React, { useState } from 'react';
 
 /* CSS Styles --------------------- */
-import style from './App.css'
 import css from 'classnames'
 
 /* ReactRouter ----------------------- */
 import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useNavigate
+	BrowserRouter as Router,
+	Route,
+	Routes,
 } from 'react-router-dom'
 
 /* Components ----------------------- */
-import { Home, Header, Login, AddProducts, NoMatch } from '.'
+import { Home, Header, Login, CreateNewProduct, NoMatch } from './'
+import { Alert } from '../Components/alerts/Alert'
 
 /* Custom hooks --------------------- */
-import { useAuth } from '../Hooks'
+import { useAuth, useAlert } from '../Hooks'
 
 /* CSS Styles ----------------------- */
 import './App.css';
 
 export const App = () => {
 
-  const [showMenu, setShowMenu] = useState(true);
+	const [showMenu, setShowMenu] = useState(true);
 
-  const { token, loading, setIsLoading, onLogin, onLogOut } = useAuth()
+	const { token, loading, setIsLoading, onLogin, onLogOut } = useAuth()
 
-  if (!token) {
-    return <Login onLogin={onLogin} />
-  }
+	const { isActive, title, message, type, newAlert, closeAlert } = useAlert()
 
-  return (
-    <div className="App">
-      <Router>
-        <Header
-          showMenu={showMenu}
-          setShowMenu={setShowMenu}
-          onLogOut={onLogOut}
-        />
-        <div className={css('app_container', !showMenu && 'grow')}>
-          <Routes>
-            <Route
-              exact path='/'
-              element={
-                <Home
-                  isLoading={loading}
-                  setIsLoading={setIsLoading}
-                />
-              } />
+	if (!token) {
+		return (
+			<>
+				<Alert type={type} title={title} message={message} isActive={isActive} close={closeAlert} />
+				<Login onLogin={onLogin} newAlert={newAlert} />
+			</>
+		)
+	}
 
-            <Route
-              exact path='/api/products/new'
-              element={
-                <AddProducts />
-              } />
+	return (
+		<div className="App">
+			<Router>
+				<Header
+					showMenu={showMenu}
+					setShowMenu={setShowMenu}
+					onLogOut={onLogOut}
+				/>
 
-            <Route
-              path='*'
-              element={
-                <NoMatch />
-              } />
-          </Routes>
-        </div>
+				<Alert type={type} title={title} message={message} isActive={isActive} close={closeAlert} />
 
-      </Router>
-    </div>
-  );
+				<div className={css('app_container', !showMenu && 'grow')}>
+					<Routes>
+						<Route
+							exact path='/'
+							element={
+								<Home
+									isLoading={loading}
+									setIsLoading={setIsLoading}
+								/>
+							} />
+
+						<Route
+							exact path='/api/products/new'
+							element={
+								<CreateNewProduct newAlert={newAlert} />
+							} />
+
+						<Route
+							path='*'
+							element={
+								<NoMatch />
+							} />
+					</Routes>
+				</div>
+
+			</Router>
+		</div>
+	);
 }
 

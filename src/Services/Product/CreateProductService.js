@@ -3,6 +3,8 @@ export const CreateProductService = (data) => {
 
     const url = `https://api.hardstore.store/api/products/new`
 
+		const devUrl = 'http://localhost:8000/api/products/new'
+
     const requestHeaders = new Headers();
     requestHeaders.append("Content-Type", "application/json;charset=utf-8");
 
@@ -15,7 +17,7 @@ export const CreateProductService = (data) => {
         body: JSON.stringify(data)
     };
 
-    fetch(`http://127.0.0.1:8000/api/products/new`, requestOptions)
+    fetch(devUrl, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error))

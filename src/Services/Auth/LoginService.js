@@ -8,7 +8,7 @@ export const LoginService = async (id, password) => {
 
     const url = `https://api.hardstore.store/api/auth/employees/login`
 
-    const devURL = `http://127.0.0.1:8000/api/auth/employees/login`
+    const devUrl = `http://localhost:8000/api/auth/employees/login`
 
     const params = {
         method: 'POST',

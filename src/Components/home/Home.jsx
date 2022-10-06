@@ -7,7 +7,7 @@ import style from './Home.module.css'
 import css from 'classnames'
 
 /* Components ----------------------- */
-import { MenuScreen, AddProducts } from '..'
+import { MenuScreen, CreateNewProduct } from '..'
 
 export const Home = ({ isLoading, setIsLoading }) => {
 

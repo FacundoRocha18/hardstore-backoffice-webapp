@@ -2,83 +2,67 @@ import React, { useState } from 'react';
 
 /* CSS Styles --------------------- */
 import style from './Login.module.css'
-import css from 'classnames'
 
-import { Loading } from '..'
+/* Components --------------------- */
+import { Loading } from '../index'
 
-export const Login = ({ onLogin }) => {
+/* Custom hooks --------------------- */
 
-  const [showLoading, setLoading] = useState();
+export const Login = ({ onLogin, newAlert }) => {
 
-  const [userData, setUserData] = useState({
-    id: '',
-    pin: ''
-  })
+	const [showLoading, setLoading] = useState();
 
-  const handleUserInfoChanged = ({ target }) => {
+	const [ uId, setUId ] = useState('');
+	const [ uPin, setUPin ] = useState('');
 
-    switch (target.name) {
+	const handleSubmit = async (e) => {
+		e.preventDefault();
 
-      case 'id':
-        setUserData({
-          ...userData,
-          id: target.value
-        })
-        break;
+		const { loading, status, message } = await onLogin(uId, uPin)
 
-      case 'pin':
+		if (!status) {
+			return newAlert(message, message, 'error');
+		}
 
-        setUserData({
-          ...userData,
-          pin: target.value
-        })
-        break;
-    }
-  }
+		newAlert(message, message, 'success');
+		return setLoading(loading)
+	}
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+	if (showLoading) {
+		return (
+			<Loading />
+		)
+	}
 
-    const loading = await onLogin(userData)
+	if (!showLoading) {
+		return (
+			<>
+				<section className={style.login_container}>
+					<div className={style.login_header}>
+						<h2>Inicie sesión</h2>
+					</div>
+					<div className={style.login_body}>
 
-    return setLoading(loading)
-  }
+						<form onSubmit={(e) => handleSubmit(e)}>
+							<div className={style.inputs_container}>
+								<div className={style.input_row}>
+									<label htmlFor='id'>Tu ID:</label>
+									<input name='id' id='id' type='text' placeholder='Tu identificador' required onChange={(e) => setUId(e.target.value)} ></input>
+								</div>
 
-  if (showLoading) {
-    return (
-      <Loading />
-    )
-  }
-
-  if (!showLoading) {
-    return (
-      <>
-        <section className={style.login_container}>
-          <div className={style.login_header}>
-            <h2>Inicie sesión</h2>
-          </div>
-          <div className={style.login_body}>
-
-            <form onSubmit={(e) => handleSubmit(e)}>
-              <div className={style.inputs_container}>
-                <div className={style.input_row}>
-                  <label htmlFor='id'>Tu ID:</label>
-                  <input name='id' id='id' type='text' placeholder='Tu identificador' required onChange={(e) => handleUserInfoChanged(e)} ></input>
-                </div>
-
-                <div className={style.input_row}>
-                  <label htmlFor='pin'>Tu PIN:</label>
-                  <input name='pin' id='pin' type='password' autoComplete='none' placeholder='pin' required onChange={(e) => handleUserInfoChanged(e)}></input>
-                </div>
-              </div>
-              <div className={style.buttons_container}>
-                <button><p>Iniciar sesión</p></button>
-              </div>
-            </form>
-          </div>
-        </section>
-      </>
-    )
-  }
+								<div className={style.input_row}>
+									<label htmlFor='pin'>Tu PIN:</label>
+									<input name='pin' id='pin' type='password' autoComplete='none' placeholder='pin' required onChange={(e) => setUPin(e.target.value)}></input>
+								</div>
+							</div>
+							<div className={style.buttons_container}>
+								<button><p>Iniciar sesión</p></button>
+							</div>
+						</form>
+					</div>
+				</section>
+			</>
+		)
+	}
 }
 
