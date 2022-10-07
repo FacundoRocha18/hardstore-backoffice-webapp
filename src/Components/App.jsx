@@ -11,7 +11,7 @@ import {
 } from 'react-router-dom'
 
 /* Components ----------------------- */
-import { Home, Header, Login, CreateNewProduct, NoMatch } from './'
+import { Home, Header, Login, CreateNewProduct, NoMatch, LogoutModal } from './'
 import { Alert } from '../Components/alerts/Alert'
 
 /* Custom hooks --------------------- */
@@ -23,6 +23,8 @@ import './App.css';
 export const App = () => {
 
 	const [showMenu, setShowMenu] = useState(true);
+
+	const [showLogoutModal, setShowLogoutModal] = useState(false)
 
 	const { token, loading, setIsLoading, onLogin, onLogOut } = useAuth()
 
@@ -43,11 +45,11 @@ export const App = () => {
 				<Header
 					showMenu={showMenu}
 					setShowMenu={setShowMenu}
-					onLogOut={onLogOut}
+					onLogOut={setShowLogoutModal}
 				/>
 
 				<Alert type={type} title={title} message={message} isActive={isActive} close={closeAlert} />
-
+				<LogoutModal isActive={showLogoutModal} setIsActive={setShowLogoutModal} onLogout={onLogOut} newAlert={newAlert} />
 				<div className={css('app_container', !showMenu && 'grow')}>
 					<Routes>
 						<Route

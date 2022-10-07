@@ -78,6 +78,7 @@ p {
   font-family: 'Poppins', sans-serif;
   font-size: 1.6rem;
   font-weight: var(--medium);
+	text-align: left;
 }
 
 ul, ol, li {
@@ -91,6 +92,7 @@ ul, ol, li {
   --blue-hover: #0277BD;
 	--yellow: #FFC107;
 	--green: #66BB6A;
+	--green-hover: #58a55c;
 	--red: #ec4644;
   --orange: #ff6f00dc;
   --orange-hover: #c25705;

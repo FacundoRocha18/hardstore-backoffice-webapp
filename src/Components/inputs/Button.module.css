@@ -36,21 +36,25 @@
     background-color: var(--orange);
 }
 
-.button.save-btn {
-    background: var(--success-btn-gradient);
+.button.save-btn,
+.button.accept {
+    background: var(--green);
 
 }
 
-.button.save-btn:hover {
-    background: var(--success-btn-gradient-hover);
+.button.save-btn:hover,
+.button.accept:hover {
+    background: var(--green-hover);
 }
 
-.button.cancel-btn {
+.button.cancel-btn,
+.button.decline {
     background-color: var(--red);
 
 }
 
-.button.cancel-btn:hover {
+.button.cancel-btn:hover,
+.button.decline:hover {
 	background-color: var(--critical-btn-hover-bg-color);
 }
 
