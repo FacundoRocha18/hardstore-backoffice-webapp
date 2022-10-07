@@ -2,39 +2,39 @@ import { useState, useEffect } from "react";
 
 export const useAlert = () => {
 
-	const [ isActive, setIsActive ] = useState(false);
+	const [isActive, setIsActive] = useState(false);
 
-  const [title, setTitle] = useState('Some title');
-	
-  const [message, setMessage] = useState('Some message');
+	const [title, setTitle] = useState('Some title');
 
-  const [type, setType] = useState(null);
+	const [message, setMessage] = useState('Some message');
 
-  useEffect(() => {
+	const [type, setType] = useState(null);
 
-    const timer = setTimeout(() => close(), 3000);
+	useEffect(() => {
 
-    return () => {
-      clearTimeout(timer);
-    }
-  })
+		const timer = setTimeout(() => close(), 3000);
 
-  const show = (title, message, type) => {
+		return () => {
+			clearTimeout(timer);
+		}
+	})
+
+	const show = (title, message, type) => {
 
 		setTitle(title);
-    setMessage(message);
-    setType(type);
-    setIsActive(true);
-  };
+		setMessage(message);
+		setType(type);
+		setIsActive(true);
+	};
 
-  const close = () => setIsActive(false);
+	const close = () => setIsActive(false);
 
-  return ({
-    isActive: isActive,
+	return ({
+		isActive: isActive,
 		title: title,
-    message: message,
-    type: type,
-    newAlert: show,
-    closeAlert: close
-  })
+		message: message,
+		type: type,
+		newAlert: show,
+		closeAlert: close
+	})
 }

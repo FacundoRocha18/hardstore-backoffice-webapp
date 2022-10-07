@@ -3,26 +3,49 @@
 exports[`Tests on <Alert /> component should match the snapshot 1`] = `
 <div>
   <section
-    class="container active"
+    class="container inactive"
   >
     <div
-      class="icon info"
+      class="head info"
     >
       <span
         class="material-icons-outlined"
+        data-testid="test-icon"
       >
         info
       </span>
     </div>
     <div
-      class="message active"
+      class="body inactive"
     >
-      <h3>
-        Inicio de sesion exitoso
-      </h3>
-      <p>
-        Bienvenido Facundo.
-      </p>
+      <div
+        class="message"
+      >
+        <h4
+          data-testid="test-title"
+        >
+          Inicio de sesion exitoso
+        </h4>
+        <p
+          data-testid="test-message"
+        >
+          Bienvenido Facundo.
+        </p>
+      </div>
+      <div
+        class="btn_container"
+      >
+        <button
+          class="button close-btn hidden"
+          data-testid="test-icon"
+        >
+          <span
+            class="material-icons-outlined"
+          >
+            close
+          </span>
+        </button>
+      </div>
     </div>
   </section>
 </div>

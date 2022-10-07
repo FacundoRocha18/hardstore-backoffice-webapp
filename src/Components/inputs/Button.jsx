@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import style from './Button.module.css'
 import css from 'classnames'
 
-export const Button = ({ variant, children, show, func }) => {
+export const Button = ({ variant, children, show, func, testId }) => {
 
 	const handleAction = (e) => {
 		e.preventDefault()
@@ -16,7 +16,7 @@ export const Button = ({ variant, children, show, func }) => {
 
 	if(!func){
 		return (
-			<button className={css(style.button, style[variant], !show && style.hidden)} >
+			<button className={css(style.button, style[variant], !show && style.hidden)} data-testid={testId} >
 				{children}
 			</button>
 		)

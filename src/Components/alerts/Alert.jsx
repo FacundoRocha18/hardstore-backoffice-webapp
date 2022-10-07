@@ -15,7 +15,7 @@ export const Alert = ({ type, title, message, isActive, close }) => {
 		<>
 			<section className={css(style.container, isActive ? style.active : style.inactive)}>
 				<div className={css(style.head, style[type])}>
-					<span className="material-icons-outlined">
+					<span className="material-icons-outlined" data-testid='test-icon'>
 						{
 							icon
 						}
@@ -23,13 +23,13 @@ export const Alert = ({ type, title, message, isActive, close }) => {
 				</div>
 				<div className={css(style.body, isActive ? style.active : style.inactive)}>
 					<div className={css(style.message)}>
-						<h4>
+						<h4 data-testid='test-title'>
 							{title}
 						</h4>
-						<p>{message}</p>
+						<p data-testid='test-message'>{message}</p>
 					</div>
 					<div className={css(style.btn_container)}>
-						<Button variant={'close-btn'} func={close} >
+						<Button variant={'close-btn'} func={close} testId='test-icon' >
 							<span className="material-icons-outlined">
 								close
 							</span>
