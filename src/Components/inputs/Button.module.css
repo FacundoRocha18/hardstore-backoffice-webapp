@@ -108,15 +108,16 @@
 }
 
 .button.accept {
-	background-color: var(--blue);
+	background-color: var(--orange);
 }
 
 .button.accept:hover {
-	background-color: var(--blue-hover);
+	background-color: var(--orange-hover);
 }
 
 .button.decline {
 	background-color: transparent;
+	border: 2px solid var(--orange);
 	transition: all .3s ease;
 }
 
