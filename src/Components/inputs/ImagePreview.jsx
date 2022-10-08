@@ -6,105 +6,105 @@ import style from './ImagePreview.module.css'
 import css from 'classnames'
 
 /* Components --------------------- */
-import { Button } from '..'
+import { Button } from '../'
 
 export const ImagePreview = ({ setImageName, imageList, setImageList, name, required, newAlert }) => {
 
-    const [show, setShow] = useState(false)
+	const [show, setShow] = useState(false)
 
-    const [isImageLoaded, setIsImageLoaded] = useState(false);
+	const [isImageLoaded, setIsImageLoaded] = useState(false);
 
-    const [isListFull, setIsListFull] = useState(false);
+	const [isListFull, setIsListFull] = useState(false);
 
-    useEffect(() => {
-        if (imageList.length < 6) {
-           return setIsListFull(false)
-        }
-        setIsListFull(true);
-    }, [imageList])
+	useEffect(() => {
+		if (imageList.length < 6) {
+			return setIsListFull(false)
+		}
+		setIsListFull(true);
+	}, [imageList])
 
 
-    const handleLoad = ( { target } ) => {
+	const handleLoad = ({ target }) => {
 
-        const [file] = target.files;
-        const reader = new FileReader();
+		const [file] = target.files;
+		const reader = new FileReader();
 
-        if ( file ) {
-            setImageName(file.name);
-        }
+		if (file) {
+			setImageName(file.name);
+		}
 
-        reader.onload = ({ target }) => {
-            const exists = imageList.find((x) => x === target.result)
+		reader.onload = ({ target }) => {
+			const exists = imageList.find((x) => x === target.result)
 
-            if (!exists && !isListFull) {
-                setImageList([
-                    target.result,
-                    ...imageList
-                ]);
-                return setIsImageLoaded(true);
-            }
+			if (!exists && !isListFull) {
+				setImageList([
+					target.result,
+					...imageList
+				]);
+				return setIsImageLoaded(true);
+			}
 
-                        
-            newAlert('No se pueden subir imagenes repetidas', 'No se pueden subir imagenes repetidas', 'error')
 
-            setTimeout(() => {
-                setShow(false)
-            }, 3000);
-        }
+			newAlert('No se pueden subir imagenes repetidas', 'No se pueden subir imagenes repetidas', 'error')
 
-        reader.readAsDataURL(file)
-    }
+			setTimeout(() => {
+				setShow(false)
+			}, 3000);
+		}
 
-    const deleteImage = (item) => {
+		reader.readAsDataURL(file)
+	}
 
-        const exists = imageList.find((x) => x === item);
+	const deleteImage = (item) => {
 
-        if (exists) setImageList(imageList.filter((x) => x !== item))
-        if (imageList.length <= 1) setIsImageLoaded(false);
-				newAlert('Se borró correctamente la imágen', 'Se borró correctamente la imágen', 'success')
+		const exists = imageList.find((x) => x === item);
 
-    }
+		if (exists) setImageList(imageList.filter((x) => x !== item))
+		if (imageList.length <= 1) setIsImageLoaded(false);
+		newAlert('Se borró correctamente la imágen', 'Se borró correctamente la imágen', 'success')
 
-    return (
-        <>
-            {
-                <div className={style.preview_container}>
-                    <div className={style.images_container}>
-                        {
-                            imageList.map((item, index) => (
-                                <div key={index} className={style.image_card}>
-                                    <Button variant='delete-btn' show={isImageLoaded} func={() => deleteImage(item)}>
-                                        <span className="material-icons-round">
-                                            close
-                                        </span>
-                                    </Button>
-                                    <img
-                                        src={item}
-                                        alt={item.name}
-                                        id='preview'
-                                        className={css(style.image_preview, !isImageLoaded && style.hidden, isImageLoaded && style.grow)}>
-                                    </img>
-                                </div>
-                            ))
-                        }
-                        <div className={css(isListFull && style.hidden, style.image_card, style.no_background)}>
-                            <label className={css(style.image_preview_label, isListFull && style.hidden)} htmlFor={name}>
-                                <span className="material-icons-round">
-                                    add
-                                </span>
-                            </label>
-                        </div>
-                    </div>
+	}
 
-                    <input type={'file'} accept={'image/*'} name={name} id={name} className={style.hidden} onChange={(e) => handleLoad(e)} required={required} />
-                </div>
-            }
-        </>
-    )
+	return (
+		<>
+			{
+				<div className={style.preview_container}>
+					<div className={style.images_container}>
+						{
+							imageList.map((item, index) => (
+								<div key={index} className={style.image_card}>
+									<Button variant='delete-btn' show={isImageLoaded} func={() => deleteImage(item)}>
+										<span className="material-icons-round">
+											close
+										</span>
+									</Button>
+									<img
+										src={item}
+										alt={item.name}
+										id='preview'
+										className={css(style.image_preview, !isImageLoaded && style.hidden, isImageLoaded && style.grow)}>
+									</img>
+								</div>
+							))
+						}
+						<div className={css(isListFull && style.hidden, style.image_card, style.no_background)}>
+							<label className={css(style.image_preview_label, isListFull && style.hidden)} htmlFor={name}>
+								<span className="material-icons-round">
+									add
+								</span>
+							</label>
+						</div>
+					</div>
+
+					<input type={'file'} accept={'image/*'} name={name} id={name} className={style.hidden} onChange={(e) => handleLoad(e)} required={required} />
+				</div>
+			}
+		</>
+	)
 }
 
 
 ImagePreview.propTypes = {
-    imageList: PropTypes.array.isRequired,
-    setImageList: PropTypes.func.isRequired
+	imageList: PropTypes.array.isRequired,
+	setImageList: PropTypes.func.isRequired
 }

@@ -30,11 +30,11 @@ export const useAlert = () => {
 	const close = () => setIsActive(false);
 
 	return ({
-		isActive: isActive,
-		title: title,
-		message: message,
-		type: type,
-		newAlert: show,
+		isActive,
+		title,
+		message,
+		type,
+		openAlert: show,
 		closeAlert: close
 	})
 }

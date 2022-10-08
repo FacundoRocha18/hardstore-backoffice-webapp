@@ -9,6 +9,7 @@
 }
 
 .login_header h2 {
+	color: var(--text-dark);
     text-align: center;
 }
 
@@ -59,6 +60,7 @@
 
 .buttons_container button p {
     font-size: 1.6rem;
+		text-align: center;
 }
 
 .buttons_container button:hover {

@@ -11,8 +11,8 @@ import {
 } from 'react-router-dom'
 
 /* Components ----------------------- */
-import { Home, Header, Login, CreateNewProduct, NoMatch, LogoutModal } from './'
-import { Alert } from '../Components/alerts/Alert'
+import { Home, Header, Login, CreateNewProduct, NoMatch, Modal } from './'
+import { Alert } from './Alerts/Alert'
 
 /* Custom hooks --------------------- */
 import { useAuth, useAlert } from '../Hooks'
@@ -28,7 +28,7 @@ export const App = () => {
 
 	const { token, loading, setIsLoading, onLogin, onLogOut } = useAuth()
 
-	const { isActive, title, message, type, newAlert, closeAlert } = useAlert()
+	const { isActive, title, message, type, openAlert: newAlert, closeAlert } = useAlert()
 
 	if (!token) {
 		return (
@@ -49,7 +49,7 @@ export const App = () => {
 				/>
 
 				<Alert type={type} title={title} message={message} isActive={isActive} close={closeAlert} />
-				<LogoutModal isActive={showLogoutModal} setIsActive={setShowLogoutModal} onLogout={onLogOut} newAlert={newAlert} />
+				<Modal isActive={showLogoutModal} setIsActive={setShowLogoutModal} onLogout={onLogOut} newAlert={newAlert} />
 				<div className={css('app_container', !showMenu && 'grow')}>
 					<Routes>
 						<Route
